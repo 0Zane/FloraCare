@@ -1,21 +1,70 @@
 # TNSI
 
-Ce projet des trophéesNSI a été réalisé avec micropython
+[![License](https://img.shields.io/badge/License--blue.svg)](LICENSE) [![Open Source](https://img.shields.io/badge/Open%20Source-yes-brightgreen.svg)](LICENSE) [![Open Hardware](https://img.shields.io/badge/Open%20Hardware-yes-brightgreen.svg)](https://openhardware.science) [![MicroPython](https://img.shields.io/badge/MicroPython-ESP32-1abc9c.svg)](https://micropython.org) [![ESP32-S3](https://img.shields.io/badge/ESP32--S3-ESPRESSIF-ff6f00.svg)](https://www.espressif.com)
+
+> **Tamagotchi de plante** — un objet connecté qui surveille la santé d'une plante avec des capteurs de température, d'humidité de l'air, d'humidité du sol et de lumière, construit pour les trophées NSI 2026 (thème **Nature**).
 
 
-## 🛠 Matériel & Composants 
+<br>
+<br>
 
-Le projet repose sur un circuit personnalisé (Custom PCB) piloté par un ESP32-S3, choisi pour ses capacités de gestion native de l'USB et sa puissance de calcul.
+## 🎯 Objectif
+
+Ce projet a été réalisé pour les [**trophées NSI 2026**](https://trophees-nsi.fr/) par **@0Zane** et **@coderyansky**. Il propose une experience ludique et éducative : un compagnon numérique qui aide à prendre soin d'une plante en affichant des données en temps réel et des conseils selon l'état du capteur.
+
+
+
+## 🧩 Matériel & Capteurs
+
+Le projet repose sur un circuit imprimé personnalisé (PCB) piloté par un **ESP32-S3**, choisi pour ses capacités USB natif et sa puissance pour exécuter Micropython.
 
 | Composant | Description | Interface / Protocole |
 | :--- | :--- | :--- |
 | **MCU** | ESP32-S3 Module | - |
-| **PCB** | Custom Design (Gerber files in `/hardware`) | - |
-| **Écran** | LCD 1.3" ou 2.0" (ST7789) | **SPI** |
-| **Capteur Temp.** | ... | **I2C / OneWire** |
-| **Capteur Sol** | Soil Moisture Sensor (...) | **Analogique (ADC)** |
-| **Capteur Lumière** | ... | **Analogique / I2C** |
-| **Alimentation** | Port USB-C (LDO 3.3V intégré) | **5V DC** |
-| **Boîtier** | Case conçu sur mesure (Fichiers STL) | **Impression 3D** |
+| **PCB** | Conception personnalisée (Gerber dans `/hardware`) | - |
+| **Écran** |  | **SPI** |
+| **Capteur Temp. / Humidité** |  |  |
+| **Capteur Humidité Sol** | Capteur d'humidité du sol analogique | **ADC** |
+| **Capteur Lumière** | | **I2C** / |
+| **Alimentation** | Port USB-C  | **5V DC -> 3.3V DC** |
+| **Boîtier** | Boîtier imprimé en 3D (STL dans `/case`) | **Impression 3D** |
 
-> **Note :** Ce projet est conçu pour être alimenté en continu via USB-C, éliminant ainsi les cycles de charge de batterie pour une surveillance 24/7.
+> ⚡ Ce projet tourne sous **Micropython** et est prévu pour fonctionner en continu via USB-C.
+
+
+
+## 🚀 Démarrage rapide
+
+1. Flasher le firmware MicroPython sur l'ESP32-S3.
+2. Copier le contenu de `src/` sur la mémoire flash du microcontrôleur.
+3. Connecter les capteurs sur les broches définies dans.
+4. Brancher en USB-C et observer les lectures sur l'écran.
+
+
+
+
+## 📁 Structure du dépôt
+
+- `src/` : code Micropython (main, bibliothèques, config)
+- `hardware/` : fichiers Gerber et PCB (KiCad)
+- `case/` : modèles STL pour impression 3D
+- `README.md` : documentation du projet et mode d'emploi
+- `presentation.md` : présentation du projet
+- `requirements.txt` : Librairies utilisées à installer
+- `LICENSE` : License du projet
+
+
+
+## 🤝 Contribution
+
+Ce projet est **open source et open hardware**. N'hésitez pas à proposer des améliorations :
+
+- Améliorer la gestion des capteurs ou ajouter des nouveaux capteurs
+- Ajouter une interface web / API pour consulter les données à distance
+- Optimiser la consommation et la réservation de l'écran
+
+
+
+## 📝 Licence
+
+Ce projet est distribué sous licence **...**. Voir le fichier `LICENSE` pour plus de détails.
