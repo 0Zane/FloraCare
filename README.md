@@ -1,6 +1,6 @@
 # TNSI
 
-[![License](https://img.shields.io/badge/License--blue.svg)](LICENSE) [![Open Source](https://img.shields.io/badge/Open%20Source-yes-brightgreen.svg)](LICENSE) [![Open Hardware](https://img.shields.io/badge/Open%20Hardware-yes-brightgreen.svg)](https://openhardware.science) [![MicroPython](https://img.shields.io/badge/MicroPython-ESP32-1abc9c.svg)](https://micropython.org) [![ESP32-S3](https://img.shields.io/badge/ESP32--S3-ESPRESSIF-ff6f00.svg)](https://www.espressif.com)
+[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE) [![Open Source](https://img.shields.io/badge/Open%20Source-yes-brightgreen.svg)](LICENSE) [![Open Hardware](https://img.shields.io/badge/Open%20Hardware-yes-brightgreen.svg)](https://openhardware.science) [![MicroPython](https://img.shields.io/badge/MicroPython-ESP32-1abc9c.svg)](https://micropython.org) [![ESP32-S3](https://img.shields.io/badge/ESP32--S3-ESPRESSIF-ff6f00.svg)](https://www.espressif.com)
 
 > **Tamagotchi de plante** — un objet connecté qui surveille la santé d'une plante avec des capteurs de température, d'humidité de l'air, d'humidité du sol et de lumière, construit pour les trophées NSI 2026 (thème **Nature**).
 
@@ -51,7 +51,7 @@ Le projet repose sur un circuit imprimé personnalisé (PCB) piloté par un **ES
 - `README.md` : documentation du projet et mode d'emploi
 - `presentation.md` : présentation du projet
 - `requirements.txt` : Librairies utilisées à installer
-- `LICENSE` : License du projet
+- `LICENSE` : GPL v3
 
 
 
@@ -67,4 +67,4 @@ Ce projet est **open source et open hardware**. N'hésitez pas à proposer des a
 
 ## 📝 Licence
 
-Ce projet est distribué sous licence **...**. Voir le fichier `LICENSE` pour plus de détails.
+Ce projet est distribué sous licence **GPL v3**. Voir le fichier `LICENSE` pour plus de détails.
