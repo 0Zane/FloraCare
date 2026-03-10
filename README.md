@@ -22,7 +22,7 @@ Le projet repose sur un circuit imprimé personnalisé (PCB) piloté par un **ES
 | :--- | :--- | :--- |
 | **MCU** | ESP32-S3 Module | - |
 | **PCB** | Conception personnalisée (Gerber dans `/hardware`) | - |
-| **Écran** |  | **SPI** |
+| **Écran** | 1.9-inch 170X320 IPS color screen | **SPI** |
 | **Capteur Temp. / Humidité** |  |  |
 | **Capteur Humidité Sol** | Capteur d'humidité du sol analogique | **ADC** |
 | **Capteur Lumière** | | **I2C** / |
