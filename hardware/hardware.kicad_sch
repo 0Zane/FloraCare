@@ -2889,6 +2889,18 @@
 		(uuid 37fc061e-38fc-4915-a955-75cfbafb98f2)
 	)
 	(rectangle
+		(start 182.88 17.78)
+		(end 222.25 31.75)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 6035e4fc-1875-4de7-965a-15a1245bc478)
+	)
+	(rectangle
 		(start 237.49 44.45)
 		(end 276.86 67.31)
 		(stroke
@@ -2945,6 +2957,16 @@
 			)
 		)
 		(uuid "143b8677-d1ed-4d8a-948b-09658d976130")
+	)
+	(text "SOIL SENSOR"
+		(exclude_from_sim no)
+		(at 212.598 21.082 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "14f21ebe-a2eb-42b9-8cdb-d63319996220")
 	)
 	(text "USB-C PORT\n"
 		(exclude_from_sim no)
@@ -3212,6 +3234,28 @@
 			)
 		)
 	)
+	(global_label "DO_SOIL"
+		(shape input)
+		(at 195.58 26.67 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2305e2f7-81e0-48be-86c4-a8450e461d64")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 189.9943 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "RES"
 		(shape input)
 		(at 250.19 55.88 180)
@@ -3291,6 +3335,28 @@
 		(uuid "3e37a13e-6959-40ff-8413-1f193b45bd0b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 244.7253 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "AO_SOIL"
+		(shape input)
+		(at 195.58 29.21 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "690efc9e-10af-45fe-851b-588221712d59")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 185.0352 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3903,6 +3969,73 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3V3")
+		(at 195.58 21.59 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3287ad67-f666-486f-a88c-f5f6d7db7721")
+		(property "Reference" "#PWR03"
+			(at 199.39 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 191.77 21.5899 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 195.58 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 195.58 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 195.58 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b1f7efa6-5e6d-4f92-a813-38c8551a10a4")
+		)
+		(instances
+			(project "hardware"
+				(path "/a233d2e6-40a7-473a-8214-598adc2356c8"
+					(reference "#PWR03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+5V")
 		(at 104.14 35.56 90)
 		(unit 1)
@@ -4030,6 +4163,82 @@
 			(project "hardware"
 				(path "/a233d2e6-40a7-473a-8214-598adc2356c8"
 					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_01x04_Socket")
+		(at 200.66 24.13 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "46cfa408-ed0e-4a0c-a0c8-84804ea16602")
+		(property "Reference" "J2"
+			(at 201.93 24.1299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Conn_01x04_Socket"
+			(at 201.93 26.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 200.66 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 200.66 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x04, script generated"
+			(at 200.66 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "4"
+			(uuid "bc067906-4240-4db2-87bd-a81bbee6472a")
+		)
+		(pin "2"
+			(uuid "960a2e2b-6119-4194-a2b4-40f36528096f")
+		)
+		(pin "1"
+			(uuid "4147881a-6ef5-4622-98cc-bdea7a56028a")
+		)
+		(pin "3"
+			(uuid "8ad982b8-11c8-4c94-aa09-74d094caa5f0")
+		)
+		(instances
+			(project "hardware"
+				(path "/a233d2e6-40a7-473a-8214-598adc2356c8"
+					(reference "J2")
 					(unit 1)
 				)
 			)
@@ -4279,6 +4488,73 @@
 			(project ""
 				(path "/a233d2e6-40a7-473a-8214-598adc2356c8"
 					(reference "J4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 195.58 24.13 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "57ca96cb-0fa1-4a98-ab91-ba16b9cd6ae5")
+		(property "Reference" "#PWR016"
+			(at 189.23 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 191.77 24.1299 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 195.58 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 195.58 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 195.58 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "01c9e6c4-a76b-43b4-9049-eaa81a30791b")
+		)
+		(instances
+			(project "hardware"
+				(path "/a233d2e6-40a7-473a-8214-598adc2356c8"
+					(reference "#PWR016")
 					(unit 1)
 				)
 			)
