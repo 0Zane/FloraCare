@@ -3097,6 +3097,10 @@
 		(uuid "8bb9bbc1-7741-4ee8-be97-f7acfd0026ef")
 	)
 	(no_connect
+		(at 195.58 26.67)
+		(uuid "b081ac20-8f03-4eba-bf85-e4baface0089")
+	)
+	(no_connect
 		(at 60.96 137.16)
 		(uuid "b5cba2d2-c520-4c28-86af-194e0dfb8d85")
 	)
@@ -3107,10 +3111,6 @@
 	(no_connect
 		(at 60.96 182.88)
 		(uuid "c1e04179-81e6-479a-aa57-646c4d4edc13")
-	)
-	(no_connect
-		(at 60.96 144.78)
-		(uuid "c4043533-fd26-4403-b413-c9dd1877b259")
 	)
 	(no_connect
 		(at 60.96 139.7)
@@ -3230,28 +3230,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "DO_SOIL"
-		(shape input)
-		(at 195.58 26.67 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "2305e2f7-81e0-48be-86c4-a8450e461d64")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 189.9943 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 				(hide yes)
 			)
 		)
@@ -3428,6 +3406,28 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "AO_SOIL"
+		(shape input)
+		(at 60.96 144.78 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "90005ca8-e28b-4c15-9893-0da8eccda2df")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 71.5048 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
