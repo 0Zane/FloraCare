@@ -1,18 +1,7 @@
-import dht
-import time
-from machine import Pin
+"""
+Entry point: run sensor display (DHT11 + soil) on the ST7789 screen.
+"""
+from display_sensor import main
 
-capteur = dht.DHT11(Pin(15))
-
-
-while True:
-    capteur.measure()
-    
-    temp = capteur.temperature()
-    humi = capteur.humidity()
-    
-    print(f"Température : {temp}°C")
-    print(f"Humidité    : {humi}%")
-    print("---")
-    
-    time.sleep(2)
+if __name__ == "__main__":
+    main()
