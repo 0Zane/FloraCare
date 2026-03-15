@@ -5,7 +5,7 @@
 	(uuid "a233d2e6-40a7-473a-8214-598adc2356c8")
 	(paper "A4")
 	(title_block
-		(title "PlantMate")
+		(title "FloraCare")
 		(date "2026-03-06")
 		(company "Trophées NSI")
 		(comment 1 "A.D. Zane")
@@ -3409,16 +3409,6 @@
 			)
 		)
 		(uuid "14f21ebe-a2eb-42b9-8cdb-d63319996220")
-	)
-	(text "sooit 22uF en ceramique soit 10uF en tantale"
-		(exclude_from_sim no)
-		(at 118.872 23.368 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "25bf6433-cfc2-4513-8487-674db00070bc")
 	)
 	(text "LIGHT SENSOR"
 		(exclude_from_sim no)
