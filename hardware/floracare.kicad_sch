@@ -1220,7 +1220,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Connector:USB_C_Receptacle_USB2.0_14P"
+		(symbol "Connector:USB_C_Receptacle_USB2.0_16P"
 			(pin_names
 				(offset 1.016)
 			)
@@ -1235,7 +1235,7 @@
 					)
 				)
 			)
-			(property "Value" "USB_C_Receptacle_USB2.0_14P"
+			(property "Value" "USB_C_Receptacle_USB2.0_16P"
 				(at 0 19.685 0)
 				(effects
 					(font
@@ -1261,7 +1261,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "USB 2.0-only 14P Type-C Receptacle connector"
+			(property "Description" "USB 2.0-only 16P Type-C Receptacle connector"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1288,7 +1288,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "USB_C_Receptacle_USB2.0_14P_0_0"
+			(symbol "USB_C_Receptacle_USB2.0_16P_0_0"
 				(rectangle
 					(start -0.254 -17.78)
 					(end 0.254 -16.764)
@@ -1377,8 +1377,30 @@
 						(type none)
 					)
 				)
+				(rectangle
+					(start 10.16 -12.446)
+					(end 9.144 -12.954)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 10.16 -14.986)
+					(end 9.144 -15.494)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 			)
-			(symbol "USB_C_Receptacle_USB2.0_14P_0_1"
+			(symbol "USB_C_Receptacle_USB2.0_16P_0_1"
 				(rectangle
 					(start -10.16 17.78)
 					(end 10.16 -17.78)
@@ -1579,7 +1601,7 @@
 					)
 				)
 			)
-			(symbol "USB_C_Receptacle_USB2.0_14P_1_1"
+			(symbol "USB_C_Receptacle_USB2.0_16P_1_1"
 				(pin passive line
 					(at -7.62 -22.86 90)
 					(length 5.08)
@@ -1849,6 +1871,42 @@
 						)
 					)
 					(number "B6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 15.24 -12.7 180)
+					(length 5.08)
+					(name "SBU1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 15.24 -15.24 180)
+					(length 5.08)
+					(name "SBU2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3760,28 +3818,22 @@
 		(uuid "0e00ccf1-c031-44d1-9918-c565850ee867")
 	)
 	(junction
-		(at 31.75 67.31)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "158fe0e3-dc74-425d-8197-b76621c792f9")
-	)
-	(junction
 		(at 45.72 130.81)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1829ee95-6578-4d8e-9b48-027b33d2243c")
 	)
 	(junction
-		(at 46.99 29.21)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3ec53b19-3295-45bb-818b-66ea55650706")
-	)
-	(junction
 		(at 45.72 128.27)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5738db86-8611-4b14-93e3-0e848a8e7413")
+	)
+	(junction
+		(at 46.99 29.21)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "71ee0acb-606b-42a5-ba59-64bc3340d391")
 	)
 	(junction
 		(at 45.72 123.19)
@@ -3794,6 +3846,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f97e695e-20ce-466e-8aee-642ebe80c230")
+	)
+	(junction
+		(at 31.75 67.31)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ff1b93e8-1330-4961-88df-2e7fc2f86544")
 	)
 	(no_connect
 		(at 60.96 157.48)
@@ -3826,6 +3884,10 @@
 	(no_connect
 		(at 106.68 96.52)
 		(uuid "2dd02a0e-dc47-415a-9d0c-de1811b96554")
+	)
+	(no_connect
+		(at 46.99 57.15)
+		(uuid "36b72498-e878-4993-8e8c-c28b1c90b226")
 	)
 	(no_connect
 		(at 195.58 78.74)
@@ -3918,6 +3980,10 @@
 	(no_connect
 		(at 60.96 172.72)
 		(uuid "db483f04-ceb4-4d6e-862b-bd2040d6ee6c")
+	)
+	(no_connect
+		(at 46.99 59.69)
+		(uuid "e82ff86f-fa6b-4f78-8bb8-f2de5b25fe93")
 	)
 	(no_connect
 		(at 30.48 149.86)
@@ -5465,112 +5531,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:USB_C_Receptacle_USB2.0_14P")
-		(at 31.75 44.45 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "50d6ddec-d5a9-447c-ba33-e58d26049227")
-		(property "Reference" "J1"
-			(at 30.226 15.494 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "USB_C_Receptacle_USB2.0_14P"
-			(at 30.48 17.526 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_USB:USB_C_Receptacle_HCTL_HC-TYPE-C-16P-01A"
-			(at 35.56 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
-			(at 35.56 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "USB 2.0-only 14P Type-C Receptacle connector"
-			(at 31.75 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "B7"
-			(uuid "146c2543-e2f0-4b2c-b5f9-56d5f86bfd9d")
-		)
-		(pin "A9"
-			(uuid "0df6bbf3-7123-490c-9300-d5057c314be8")
-		)
-		(pin "B4"
-			(uuid "e72a328c-3568-45f4-b0d8-0bce2a5175c2")
-		)
-		(pin "A7"
-			(uuid "d95ede4f-6fcf-41ce-9753-006c2d1182e9")
-		)
-		(pin "A12"
-			(uuid "10516617-ff0f-46bf-a1e7-e87b034728a7")
-		)
-		(pin "A5"
-			(uuid "362e8075-22f9-4480-8be5-c788d0b4991c")
-		)
-		(pin "S1"
-			(uuid "893ad900-acce-46de-8740-4be9d3e2c223")
-		)
-		(pin "A1"
-			(uuid "7acaaaa9-e701-4710-9cf0-e4ee9933c5ca")
-		)
-		(pin "B1"
-			(uuid "aa76b18b-28fb-41e8-a650-8d15e1bc942b")
-		)
-		(pin "B5"
-			(uuid "230a7576-eb17-401b-8bfa-905ab19b6290")
-		)
-		(pin "B12"
-			(uuid "fec4cd71-5a7e-446d-a9c4-c0b53e0415c9")
-		)
-		(pin "A4"
-			(uuid "9757e390-4f66-4285-b83f-6f3fd875b0d4")
-		)
-		(pin "A6"
-			(uuid "5f9de096-b12c-4759-8093-8d057e413253")
-		)
-		(pin "B6"
-			(uuid "6c888f5a-21b0-4073-9a19-1a0f5b19def9")
-		)
-		(pin "B9"
-			(uuid "2e148ee8-07fc-4fb1-950c-a2bd6b2389ad")
-		)
-		(instances
-			(project ""
-				(path "/a233d2e6-40a7-473a-8214-598adc2356c8"
-					(reference "J1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector:Conn_01x04_Socket")
 		(at 248.92 45.72 0)
 		(unit 1)
@@ -5842,6 +5802,118 @@
 			(project "hardware"
 				(path "/a233d2e6-40a7-473a-8214-598adc2356c8"
 					(reference "#PWR025")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:USB_C_Receptacle_USB2.0_16P")
+		(at 31.75 44.45 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "829f8e22-2510-4333-a4dd-b34fa0ebaeb4")
+		(property "Reference" "J3"
+			(at 31.496 18.288 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "USB_C_Receptacle_USB2.0_16P"
+			(at 31.496 20.828 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_USB:USB_C_Receptacle_HCTL_HC-TYPE-C-16P-01A"
+			(at 35.56 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
+			(at 35.56 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "USB 2.0-only 16P Type-C Receptacle connector"
+			(at 31.75 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "S1"
+			(uuid "d78adf32-e17d-4cd1-86e5-c6a841264da6")
+		)
+		(pin "A1"
+			(uuid "aa4181dc-ed30-469b-b4d1-f95b419757e4")
+		)
+		(pin "A4"
+			(uuid "530d42d3-71f0-42ba-8d36-54e759eaec99")
+		)
+		(pin "A12"
+			(uuid "0ed3e36b-a36d-48d7-98cb-3b0258aa9a8a")
+		)
+		(pin "B1"
+			(uuid "725fbd00-7a71-4dc4-8363-2495b55538df")
+		)
+		(pin "B12"
+			(uuid "f9d42b4c-d747-4f7b-ae9d-6df4625c6684")
+		)
+		(pin "A7"
+			(uuid "699acf0a-9794-4435-8b8c-27efec27d37a")
+		)
+		(pin "A9"
+			(uuid "b2b0f09e-53a3-4992-9df0-4562c6065a4b")
+		)
+		(pin "B5"
+			(uuid "5ef3caa0-f79c-4b5c-afea-de26a3b680d1")
+		)
+		(pin "A5"
+			(uuid "c1cadf22-710e-4399-928f-2dff7a4dbba1")
+		)
+		(pin "B7"
+			(uuid "d5b0c5c3-ab26-4055-837a-f05dbc2aac83")
+		)
+		(pin "B4"
+			(uuid "6a4fecdc-bca1-4bde-a792-76199f004710")
+		)
+		(pin "B9"
+			(uuid "be5fb4b3-0a85-4a17-8b90-1a1d4d0c47bc")
+		)
+		(pin "B8"
+			(uuid "950a0edc-e9a9-483c-a659-8ef16317b92f")
+		)
+		(pin "A8"
+			(uuid "8e12a600-c686-4685-ac06-7a8aede76f45")
+		)
+		(pin "A6"
+			(uuid "0265c5fd-ca86-4b45-9035-e5599ee09c5f")
+		)
+		(pin "B6"
+			(uuid "75650ec8-8dd3-4283-9135-cc7757de6591")
+		)
+		(instances
+			(project ""
+				(path "/a233d2e6-40a7-473a-8214-598adc2356c8"
+					(reference "J3")
 					(unit 1)
 				)
 			)
