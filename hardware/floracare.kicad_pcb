@@ -279,7 +279,7 @@
 		(descr "ALPS 5.2mm Square Low-profile Type (Surface Mount) SKQG Series, With stem, http://www.alps.com/prod/info/E/HTML/Tact/SurfaceMount/SKQG/SKQGAFE010.html")
 		(tags "SPST Button Switch")
 		(property "Reference" "SW1"
-			(at 0.1 3.85 0)
+			(at 0.1 -4.15 0)
 			(layer "F.SilkS")
 			(uuid "bd1cee40-31c2-4f6f-99c1-7766c745e3e2")
 			(effects
@@ -290,7 +290,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 0.1 -4.15 0)
+			(at 6.1 -4.15 0)
 			(layer "F.Fab")
 			(uuid "51937c4a-fec1-4ed7-9c8f-c80dc8938a97")
 			(effects
@@ -5853,7 +5853,7 @@
 		(descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C6"
-			(at 0 2 0)
+			(at 0 -2 0)
 			(layer "F.SilkS")
 			(uuid "7dc09973-5f30-4c2a-adf1-6e22835e0aa3")
 			(effects
@@ -7424,7 +7424,7 @@
 		)
 	)
 	(gr_text "TROPHEES \nNSI 2026\n"
-		(at 230.42 115.85 0)
+		(at 231.42 120.85 0)
 		(layer "F.SilkS")
 		(uuid "72dec712-4a1f-4faa-ae9f-5a8af00a9255")
 		(effects
@@ -7462,7 +7462,7 @@
 		)
 	)
 	(gr_text "@0Zane A.D."
-		(at 229.42 117.85 0)
+		(at 230.42 123.85 0)
 		(layer "F.SilkS")
 		(uuid "a3677b88-6bc4-40d0-b87c-86c63dfe1db7")
 		(effects
@@ -7483,6 +7483,18 @@
 				(size 1 1)
 				(thickness 0.25)
 				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "RESET\n"
+		(at 212.62 105.25 0)
+		(layer "F.SilkS")
+		(uuid "e6e8e716-7619-474a-a6d6-80c358419a7f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
 			)
 			(justify left bottom)
 		)

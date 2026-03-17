@@ -4679,16 +4679,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 130.81 106.68 90)
+		(at 130.81 106.68 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "1b625366-a51b-480d-b72e-cdda277e3f19")
 		(property "Reference" "#PWR06"
-			(at 137.16 106.68 0)
+			(at 130.81 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4697,12 +4696,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 134.62 106.6799 90)
+			(at 134.62 103.886 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" ""
@@ -5318,7 +5316,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_SKQG_WithStem"
 			(at 130.81 124.46 0)
 			(effects
 				(font
@@ -6461,7 +6459,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 129.54 112.0648 0)
 			(effects
 				(font
@@ -6663,7 +6661,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 118.618 102.87 90)
 			(effects
 				(font
@@ -7003,7 +7001,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 121.92 131.318 90)
 			(effects
 				(font
@@ -7244,7 +7242,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_SKQG_WithStem"
 			(at 125.73 101.6 0)
 			(effects
 				(font

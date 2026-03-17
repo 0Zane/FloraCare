@@ -188,6 +188,7 @@
       ],
       "track_widths": [
         0.0,
+        0.5,
         0.7
       ],
       "tuning_pattern_settings": {
@@ -585,6 +586,12 @@
           "group_by": false,
           "label": "#",
           "name": "${ITEM_NUMBER}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "LCSC Part",
+          "name": "LCSC Part",
           "show": false
         }
       ],
