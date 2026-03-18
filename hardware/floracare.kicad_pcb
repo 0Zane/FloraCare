@@ -4511,7 +4511,7 @@
 	(footprint "LOGO"
 		(layer "F.Cu")
 		(uuid "72d2b614-17d7-4dc4-933c-914fd3df23c9")
-		(at 225.42 120.85)
+		(at 223.42 120.85)
 		(property "Reference" "G***"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -7388,6 +7388,17 @@
 		(layer "F.SilkS")
 		(uuid "87ae4b3a-bd82-4f95-994b-6247fea2d932")
 	)
+	(gr_circle
+		(center 145.42 120.85)
+		(end 147.42 120.85)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "Edge.Cuts")
+		(uuid "1cd39650-f961-4888-88ca-85a56b39848e")
+	)
 	(gr_rect
 		(start 140.42 25.85)
 		(end 240.42 125.85)
@@ -7398,6 +7409,17 @@
 		(fill no)
 		(layer "Edge.Cuts")
 		(uuid "5882b0e8-7768-4f31-81b4-901c84f1e48f")
+	)
+	(gr_circle
+		(center 235.42 120.85)
+		(end 237.42 120.85)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "Edge.Cuts")
+		(uuid "5ac95f84-6a48-46c0-a418-5002362d0d40")
 	)
 	(gr_text "SOIL SENSOR"
 		(at 153.42 107.35 0)
@@ -7424,7 +7446,7 @@
 		)
 	)
 	(gr_text "TROPHEES \nNSI 2026\n"
-		(at 231.42 120.85 0)
+		(at 230.42 117.85 0)
 		(layer "F.SilkS")
 		(uuid "72dec712-4a1f-4faa-ae9f-5a8af00a9255")
 		(effects
@@ -7462,7 +7484,7 @@
 		)
 	)
 	(gr_text "@0Zane A.D."
-		(at 230.42 123.85 0)
+		(at 229.42 113.85 0)
 		(layer "F.SilkS")
 		(uuid "a3677b88-6bc4-40d0-b87c-86c63dfe1db7")
 		(effects
@@ -7497,6 +7519,82 @@
 				(thickness 0.1)
 			)
 			(justify left bottom)
+		)
+	)
+	(dimension
+		(type orthogonal)
+		(layer "Dwgs.User")
+		(uuid "3cd06147-4297-475d-a74c-6e5b8d8ad27d")
+		(pts
+			(xy 240.42 125.85) (xy 235.42 125.85)
+		)
+		(height -5)
+		(orientation 0)
+		(format
+			(prefix "")
+			(suffix "")
+			(units 3)
+			(units_format 0)
+			(precision 4)
+			(suppress_zeroes yes)
+		)
+		(style
+			(thickness 0.1)
+			(arrow_length 1.27)
+			(text_position_mode 0)
+			(arrow_direction outward)
+			(extension_height 0.58642)
+			(extension_offset 0.5)
+			(keep_text_aligned yes)
+		)
+		(gr_text "5"
+			(at 237.92 119.7 0)
+			(layer "Dwgs.User")
+			(uuid "3cd06147-4297-475d-a74c-6e5b8d8ad27d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+	)
+	(dimension
+		(type orthogonal)
+		(layer "Dwgs.User")
+		(uuid "78951998-dc1a-42ae-97bc-90053a9af8a4")
+		(pts
+			(xy 240.42 125.85) (xy 240.42 120.85)
+		)
+		(height 0)
+		(orientation 1)
+		(format
+			(prefix "")
+			(suffix "")
+			(units 3)
+			(units_format 0)
+			(precision 4)
+			(suppress_zeroes yes)
+		)
+		(style
+			(thickness 0.1)
+			(arrow_length 1.27)
+			(text_position_mode 0)
+			(arrow_direction outward)
+			(extension_height 0.58642)
+			(extension_offset 0.5)
+			(keep_text_aligned yes)
+		)
+		(gr_text "5"
+			(at 239.27 123.35 90)
+			(layer "Dwgs.User")
+			(uuid "78951998-dc1a-42ae-97bc-90053a9af8a4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
 		)
 	)
 	(segment
@@ -7791,6 +7889,14 @@
 		(layer "F.Cu")
 		(net 6)
 		(uuid "2b643d93-c942-413d-8591-0672597c4007")
+	)
+	(segment
+		(start 216.65 109.85)
+		(end 210.35 109.85)
+		(width 0.5)
+		(layer "F.Cu")
+		(net 6)
+		(uuid "2d369a66-1c7e-4f28-9d61-b28a2f236e67")
 	)
 	(segment
 		(start 212.42 98.85)
