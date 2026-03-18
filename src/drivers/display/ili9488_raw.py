@@ -1,17 +1,5 @@
 # ILI9488 standalone SPI driver for MicroPython
 # Screen: KMRTM35018-SPI V.10 | ILI9488 | 3.5" | 480x320 | SPI | RGB666 | BGR
-#
-# No LVGL, no external frameworks needed.
-# Streaming mode: draws directly to display row-by-row (no full framebuffer).
-#
-# Usage:
-#   from drivers.display.ili9488_raw import ILI9488
-#   from machine import SPI, Pin
-#   spi  = SPI(1, baudrate=40_000_000, polarity=0, phase=0, sck=Pin(12), mosi=Pin(11), miso=None)
-#   disp = ILI9488(spi, cs=Pin(10,Pin.OUT), dc=Pin(14,Pin.OUT), rst=Pin(9,Pin.OUT), bl=Pin(13,Pin.OUT))
-#   disp.init()
-#   disp.fill(ILI9488.BLACK)
-#   disp.fill_rect(10, 10, 100, 50, ILI9488.WHITE)
 
 import time
 import struct
