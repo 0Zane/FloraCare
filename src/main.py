@@ -2,14 +2,24 @@ import dht
 import time
 from machine import Pin, ADC
 
+#SENSOR PINS
 SOIL_PIN = 18
 DHT_PIN = 16
 LIGHT_SCL = 2
 LIGHT_SDA = 1
 
+#SCREEN PINS
+RES = 9
+CS = 10
+MOSI = 11
+SCLK = 12
+LED = 13
+DC = 15
 
+#Defining objects for each sensor
 capteur = dht.DHT11(Pin(DHT_PIN))
-adc = ADC(Pin(SOIL_PIN))
+adc = ADC(Pin(SOIL_PIN)) #adc : analog to digital converter on soil sensor
+
 
 def read_soil():
     adc.atten(ADC.ATTN_11DB)
