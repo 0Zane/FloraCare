@@ -3,7 +3,10 @@ import time
 from machine import Pin, ADC
 
 SOIL_PIN = 18
-DHT_PIN = 15
+DHT_PIN = 16
+LIGHT_SCL = 2
+LIGHT_SDA = 1
+
 
 capteur = dht.DHT11(Pin(DHT_PIN))
 adc = ADC(Pin(SOIL_PIN))
