@@ -141,7 +141,7 @@
 		(descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R2"
-			(at 1 -1.5 90)
+			(at 1.25 2.75 180)
 			(layer "F.SilkS")
 			(uuid "fbe5aabe-1b05-4ab8-b18a-77f5f1b63c77")
 			(effects
@@ -4951,7 +4951,7 @@
 		(descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C9"
-			(at -1.75 -1.25 0)
+			(at -0.5 -2.5 0)
 			(layer "F.SilkS")
 			(uuid "ce0e8a93-0747-49d3-b163-9c1ff54aa61a")
 			(effects
@@ -6667,7 +6667,7 @@
 		(descr "LED SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "LED handsolder")
 		(property "Reference" "R5"
-			(at -3 -0.5 0)
+			(at -0.75 2 0)
 			(layer "F.SilkS")
 			(uuid "89038b9c-494f-4848-bdfa-825b0563e91a")
 			(effects
@@ -7456,7 +7456,7 @@
 		(descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C1"
-			(at -0.05 -1.5 0)
+			(at -0.05 1.5 0)
 			(layer "F.SilkS")
 			(uuid "55edc4b9-1079-4805-96ed-583240b1c6ba")
 			(effects
@@ -8023,7 +8023,7 @@
 		(descr "LED SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "LED handsolder")
 		(property "Reference" "R3"
-			(at -3 0 0)
+			(at -3.725 1.25 0)
 			(layer "F.SilkS")
 			(uuid "0c5291ac-dad5-4da7-9727-b51c86f8acdc")
 			(effects
