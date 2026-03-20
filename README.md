@@ -26,7 +26,7 @@ Le projet repose sur un circuit imprimé personnalisé (PCB) piloté par un **ES
 | **Écran** | 1.9-inch 170X320 IPS color screen | **SPI** |
 | **Capteur Temp. / Humidité** | DHT22 | ADC |
 | **Capteur Humidité Sol** | Capteur d'humidité du sol analogique | **ADC** |
-| **Capteur Lumière** | BHE1750 | **I2C** / |
+| **Capteur Lumière** | BH1750 | **I2C** / |
 | **Alimentation** | Port USB-C  | **5V DC -> 3.3V DC** |
 | **Boîtier** | Boîtier imprimé en 3D (STL dans `/case`) | **Impression 3D** |
 
