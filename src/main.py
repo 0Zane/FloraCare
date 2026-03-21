@@ -23,6 +23,12 @@ DC = 15
 BH1750_ADDR = 0x23
 BH1750_CONT_H_RES = 0x10  # Continuous high resolution mode
 
+#FloraCareWIFI
+
+ssid = "FloraCare"
+password = "pythonTNSI2026"
+
+
 #Defining objects for each sensor
 capteur = dht.DHT22(Pin(DHT_PIN))
 adc = ADC(Pin(SOIL_PIN)) #adc : analog to digital converter on soil sensor
@@ -62,7 +68,7 @@ def launch_ap():
     try:
         sta = network.WLAN(network.AP_IF)
         sta.active(True)
-        sta.config(essid='FloraCare', authmode=network.AUTH_WPA_WPA2_PSK, password='pythonTNSI2026')
+        sta.config(essid=ssid, authmode=network.AUTH_WPA_WPA2_PSK, password=password)
 
         print('Network config:', sta.ifconfig())
     except:
