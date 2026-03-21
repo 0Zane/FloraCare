@@ -3,11 +3,8 @@ import time
 from machine import Pin, ADC, I2C
 import socket
 import network
-import asyncio
 from webpage import webpage 
 
-
-import time
 #SENSOR PINS
 SOIL_PIN = 18
 DHT_PIN = 16
@@ -23,18 +20,17 @@ LED = 13
 DC = 15
 
 BH1750_ADDR = 0x23
-BH1750_CONT_H_RES = 0x10  # Continuous high resolution mode
+BH1750_CONT_H_RES = 0x10
 
 #FloraCareWIFI
 SSID = "FloraCare"
 WIFIPASSWORD = "pythonTNSI2026"
+MAX_USER = 4
+APWIFI = True  
 
-wifiapstate = False
 
-
-#Defining objects for each sensor
 capteur = dht.DHT22(Pin(DHT_PIN))
-adc = ADC(Pin(SOIL_PIN)) #adc : analog to digital converter on soil sensor
+adc = ADC(Pin(SOIL_PIN))
 i2c = I2C(0, sda=Pin(LIGHT_SDA), scl=Pin(LIGHT_SCL), freq=400000)
 try:
     i2c.writeto(BH1750_ADDR, bytes([BH1750_CONT_H_RES]))
@@ -66,24 +62,46 @@ def read_temp():
     except:
         return -1, -1
 
-
 def launch_ap():
     try:
         sta = network.WLAN(network.AP_IF)
         sta.active(True)
         sta.config(essid=SSID, authmode=network.AUTH_WPA_WPA2_PSK, password=WIFIPASSWORD)
-
         print('Network config:', sta.ifconfig())
-        wifiapstate = True
     except:
         print("Failed to launch AP")
 
-
-
+# Launch AP and create socket ONCE, outside loop
 launch_ap()
 
+try:
+    socketFloraCare = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    socketFloraCare.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    socketFloraCare.bind(('', 80))
+    socketFloraCare.listen(MAX_USER)
+    socketFloraCare.setblocking(False) 
+    print("Server listening on port 80")
+except Exception as e:
+    print(f"Error creating socket: {e}")
+    socketFloraCare = None
+
+# Main loop
 while True:
+    # Handle web requests (non-blocking)
+    if socketFloraCare and APWIFI:
+        try:
+            conn, addr = socketFloraCare.accept()
+            print('Got a connection from %s' % str(addr))
+            request = conn.recv(1024)
+            print('Content = %s' % str(request))
+            response = webpage()
+            conn.send("HTTP/1.0 200 OK\r\nContent-type: text/html\r\n\r\n")  
+            conn.send(response)
+            conn.close()
+        except :
+            pass  # No connection available
     
+    # Read sensors every iteration
     temp, humi = read_temp()
     raw, soil_pct = read_soil()
     lux = read_light()
@@ -95,4 +113,3 @@ while True:
     print("---")
 
     time.sleep(2)
-
