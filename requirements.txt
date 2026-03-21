@@ -1,2 +1,6 @@
 esptool
 dht
+time
+machine
+socket
+network
