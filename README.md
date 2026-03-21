@@ -43,6 +43,28 @@ Le projet repose sur un circuit imprimé personnalisé (PCB) piloté par un **ES
 
 
 
+## 🌐 Interface Web WiFi
+
+FloraCare crée un **point d'accès WiFi (AP)** pour permettre l'accès à distance aux données de la plante via une interface web.
+
+### Informations de connexion WiFi
+
+| Paramètre | Valeur |
+| :--- | :--- |
+| **SSID** | `FloraCare` |
+| **Mot de passe** | `pythonTNSI2026` |
+| **Adresse IP** | `192.168.4.1` |
+| **Protocole** | **HTTP** (Port 80) |
+
+### Accès à l'interface web
+
+1. Connectez votre appareil (téléphone, tablette, PC) au réseau WiFi **FloraCare**
+2. Utilisez le mot de passe : **pythonTNSI2026**
+3. Ouvrez un navigateur web et accédez à : `http://192.168.4.1`
+4. Vous verrez l'interface affichant les données en temps réel de vos capteurs (température, humidité, lumière, humidité du sol)
+
+> 💡 **Conseil** : L'interface est accessible tant que le module ESP32-S3 est alimenté via USB-C.
+
 
 ## 📁 Structure du dépôt
 
