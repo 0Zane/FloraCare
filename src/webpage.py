@@ -602,26 +602,25 @@ def webpage(): #DON'T FORGET TO UPLOAD THIS FILE TO THE FLASH MEMORY OF THE DEVI
     document.getElementById('barLight').style.width = p.light + '%';
     document.getElementById('valLight').textContent = Math.round(p.light * 10) + 'lx';
   }
-
   function saveConfig() {
-    const color = document.getElementById('colorSelect').value;
-    const plant = document.getElementById('plantSelect').value;
+    const color = document.getElementById("colorSelect").value;
+    const plant = document.getElementById("plantSelect").value;
 
     // Send to ESP32 via fetch
-    fetch('/save', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: 'color=' + encodeURIComponent(color) + '&plant=' + encodeURIComponent(plant)
+    fetch("/save", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: "color=" + encodeURIComponent(color) + "&plant=" + encodeURIComponent(plant)
     })
-    .then(r => r.ok ? alert('✓ Configuration sauvegardée !') : alert('Erreur lors de la sauvegarde.'))
-    .catch(() => alert('✓ Config sauvegardée (simulation).'));
+    .then(r => r.ok ? alert("✓ Configuration sauvegardée !") : alert("Erreur lors de la sauvegarde."))
+    .catch(() => alert("✓ Config sauvegardée (simulation)."));
   }
 
   function confirmWifi() {
-    if (confirm('Éteindre le point d\'accès WiFi ? Le WiFi ne reviendra qu\'au redémarrage.')) {
-      fetch('/wifi_off', { method: 'POST' })
-        .then(() => alert('Point d\'accès WiFi éteint.'))
-        .catch(() => alert('Commande envoyée (simulation).'));
+    if (confirm("Éteindre le point d'accès WiFi ? Le WiFi ne reviendra qu'au redémarrage.")) {
+      fetch("/wifi_off", { method: "POST" })
+        .then(() => alert("Point d'accès WiFi éteint."))
+        .catch(() => alert("Commande envoyée (simulation)."));
     }
   }
 </script>
