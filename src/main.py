@@ -4,6 +4,8 @@ from machine import Pin, ADC, I2C
 import socket
 import network
 import asyncio
+from webpage import webpage 
+
 
 import time
 #SENSOR PINS
@@ -24,9 +26,10 @@ BH1750_ADDR = 0x23
 BH1750_CONT_H_RES = 0x10  # Continuous high resolution mode
 
 #FloraCareWIFI
+SSID = "FloraCare"
+WIFIPASSWORD = "pythonTNSI2026"
 
-ssid = "FloraCare"
-password = "pythonTNSI2026"
+wifiapstate = False
 
 
 #Defining objects for each sensor
@@ -68,11 +71,13 @@ def launch_ap():
     try:
         sta = network.WLAN(network.AP_IF)
         sta.active(True)
-        sta.config(essid=ssid, authmode=network.AUTH_WPA_WPA2_PSK, password=password)
+        sta.config(essid=SSID, authmode=network.AUTH_WPA_WPA2_PSK, password=WIFIPASSWORD)
 
         print('Network config:', sta.ifconfig())
+        wifiapstate = True
     except:
         print("Failed to launch AP")
+
 
 
 launch_ap()
