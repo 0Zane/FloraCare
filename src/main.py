@@ -27,9 +27,12 @@ BH1750_CONT_H_RES = 0x10  # Continuous high resolution mode
 capteur = dht.DHT22(Pin(DHT_PIN))
 adc = ADC(Pin(SOIL_PIN)) #adc : analog to digital converter on soil sensor
 i2c = I2C(0, sda=Pin(LIGHT_SDA), scl=Pin(LIGHT_SCL), freq=400000)
-i2c.writeto(BH1750_ADDR, bytes([BH1750_CONT_H_RES]))
+try:
+    i2c.writeto(BH1750_ADDR, bytes([BH1750_CONT_H_RES]))
+except:
+    print("Could not write address on light sensor")
 
-async def read_light():
+def read_light():
     try:
         data = i2c.readfrom(BH1750_ADDR, 2)
         return (data[0] << 8 | data[1]) / 1.2
