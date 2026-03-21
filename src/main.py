@@ -69,8 +69,10 @@ def leaunch_ap():
         print("Failed to launch AP")
 
 
+leaunch_ap()
+
 while True:
-    leaunch_ap()
+    
     temp, humi = read_temp()
     raw, soil_pct = read_soil()
     lux = read_light()
