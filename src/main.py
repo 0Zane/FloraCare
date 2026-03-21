@@ -58,7 +58,7 @@ def read_temp():
         return -1, -1
 
 
-def leaunch_ap():
+def launch_ap():
     try:
         sta = network.WLAN(network.AP_IF)
         sta.config(essid='FloraCare', password=None)
@@ -69,7 +69,7 @@ def leaunch_ap():
         print("Failed to launch AP")
 
 
-leaunch_ap()
+launch_ap()
 
 while True:
     
