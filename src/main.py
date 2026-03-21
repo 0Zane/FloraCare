@@ -61,8 +61,8 @@ def read_temp():
 def launch_ap():
     try:
         sta = network.WLAN(network.AP_IF)
-        sta.config(essid='FloraCare', password=None)
         sta.active(True)
+        sta.config(essid='FloraCare', authmode=network.AUTH_WPA_WPA2_PSK, password='pythonTNSI2026')
 
         print('Network config:', sta.ifconfig())
     except:
@@ -84,3 +84,4 @@ while True:
     print("---")
 
     time.sleep(2)
+
