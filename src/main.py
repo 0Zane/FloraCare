@@ -30,28 +30,40 @@ i2c = I2C(0, sda=Pin(LIGHT_SDA), scl=Pin(LIGHT_SCL), freq=400000)
 i2c.writeto(BH1750_ADDR, bytes([BH1750_CONT_H_RES]))
 
 async def read_light():
-    data = i2c.readfrom(BH1750_ADDR, 2)
-    return (data[0] << 8 | data[1]) / 1.2
+    try:
+        data = i2c.readfrom(BH1750_ADDR, 2)
+        return (data[0] << 8 | data[1]) / 1.2
+    except:
+        return -1
 
 def read_soil():
-    adc.atten(ADC.ATTN_11DB)
-    raw = adc.read_u16()
-    moisture_pct = max(0, min(100, 100 - (raw * 100 // 65535)))
-    return raw, moisture_pct
+    try:
+        adc.atten(ADC.ATTN_11DB)
+        raw = adc.read_u16()
+        moisture_pct = max(0, min(100, 100 - (raw * 100 // 65535)))
+        return raw, moisture_pct
+    except:
+        return -1, -1
 
 def read_temp():
-    capteur.measure()
-    temp = capteur.temperature()
-    humi = capteur.humidity()
-    return temp, humi
+    try:
+        capteur.measure()
+        temp = capteur.temperature()
+        humi = capteur.humidity()
+        return temp, humi
+    except:
+        return -1, -1
 
 
 def leaunch_ap():
-    sta = network.WLAN(network.AP_IF)
-    sta.config(essid='FloraCare', password=None)
-    sta.active(True)
+    try:
+        sta = network.WLAN(network.AP_IF)
+        sta.config(essid='FloraCare', password=None)
+        sta.active(True)
 
-    print('Network config:', sta.ifconfig())
+        print('Network config:', sta.ifconfig())
+    except:
+        print("Failed to launch AP")
 
 
 while True:
