@@ -611,7 +611,7 @@ def webpage(): #DON'T FORGET TO UPLOAD THIS FILE TO THE FLASH MEMORY OF THE DEVI
     fetch("/save", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: {"color": color , "plant": plant}
+      body: JSON.stringify({ color: color, plant: plant })
     })
     .then(r => r.ok ? alert("✓ Configuration sauvegardée !") : alert("Erreur lors de la sauvegarde."))
     .catch(() => alert("Erreur lors de l'envoi des données."));
