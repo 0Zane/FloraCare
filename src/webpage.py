@@ -454,7 +454,7 @@ def webpage(): #DON'T FORGET TO UPLOAD THIS FILE TO THE FLASH MEMORY OF THE DEVI
 
   <header>
     <div class="logo">Flora<span>Care</span></div>
-    <div class="logo-sub">Plant companion system v1.0</div>
+    <div class="logo-sub">Votre assistant pour plante v1.0</div>
   </header>
 
   <!-- Plant display panel -->
