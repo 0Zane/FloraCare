@@ -4,6 +4,8 @@ from machine import Pin, ADC, I2C
 import socket
 import network
 from webpage import webpage 
+import ujson
+
 
 #SENSOR PINS
 SOIL_PIN = 18
@@ -96,25 +98,50 @@ except Exception as e:
 
 # Main loop
 while True:
-    # Handle web requests (non-blocking)
     if socketFloraCare and APWIFI:
         try:
             conn, addr = socketFloraCare.accept()
             print('Got a connection from %s' % str(addr))
-            request = conn.recv(1024)
-            print('Content = %s' % str(request))
-            response = webpage()
-            conn.send("HTTP/1.0 200 OK\r\nContent-type: text/html\r\n\r\n")  
-            conn.send(response)
-            conn.close()
+            request = conn.recv(1024).decode('utf-8')
+            first_line = request.split('\r\n')[0]
+            print(request)
+
+            if "POST /save" in first_line:
+                try:
+                    parts = request.split('\r\n\r\n')
+                    if len(parts) > 1:
+                        
+                        body = parts[1]
+                        data = ujson.loads(body)
+                        print("Sauvegarde de :", data.get("color"), data.get("plant"))
+                        
+                        conn.send("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n")
+                except Exception as e:
+                    print("Erreur POST:", e)
+
+            elif "POST /wifi_off" in first_line:
+                conn.send("HTTP/1.1 200 OK\r\n\r\nWifi en cours de desactivation...")
+                conn.close()
+                time.sleep(1)
+                network.WLAN(network.AP_IF).active(False)
+                APWIFI = False
+                print("WIFI OFF")
+            else:
+                    response = webpage()
+                    conn.send("HTTP/1.0 200 OK\r\nContent-type: text/html\r\n\r\n")  
+                    conn.send(response)
+                    conn.close()
         except :
             pass  # No connection available
     
+
+
+
     # Read sensors every iteration
     temp, humi = read_temp()
     raw, soil_pct = read_soil()
     lux = read_light()
-
+    
     print(f"Température : {temp}°C")
     print(f"Humidité    : {humi}%")
     print(f"Soil: raw={raw}  moisture={soil_pct}%")
@@ -122,3 +149,4 @@ while True:
     print("---")
 
     time.sleep(2)
+
