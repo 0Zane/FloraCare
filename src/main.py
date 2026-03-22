@@ -19,6 +19,7 @@ SCLK = 12
 LED = 13
 DC = 15
 
+#HARDWARE ADDRESS
 BH1750_ADDR = 0x23
 BH1750_CONT_H_RES = 0x10
 
@@ -26,9 +27,9 @@ BH1750_CONT_H_RES = 0x10
 SSID = "FloraCare"
 WIFIPASSWORD = "pythonTNSI2026"
 MAX_USER = 4
-APWIFI = True  
+APWIFI = True   # We use this variable to check  if the wifi is on before trying to read the socket between ESP32-S3 and Webpage
 
-
+#Initializing sensor objects using libraries
 capteur = dht.DHT22(Pin(DHT_PIN))
 adc = ADC(Pin(SOIL_PIN))
 i2c = I2C(0, sda=Pin(LIGHT_SDA), scl=Pin(LIGHT_SCL), freq=400000)
@@ -36,6 +37,8 @@ try:
     i2c.writeto(BH1750_ADDR, bytes([BH1750_CONT_H_RES]))
 except:
     print("Could not write address on light sensor")
+
+#______________Functions to read sensors______________
 
 def read_light():
     try:
@@ -62,6 +65,7 @@ def read_temp():
     except:
         return -1, -1
 
+#______________Function to launch the WIFI access point______________
 def launch_ap():
     try:
         sta = network.WLAN(network.AP_IF)
@@ -71,8 +75,13 @@ def launch_ap():
     except:
         print("Failed to launch AP")
 
+
+
+#______________MAIN CODE AT BOOTING______________
+
 # Launch AP and create socket ONCE, outside loop
 launch_ap()
+
 
 try:
     socketFloraCare = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
