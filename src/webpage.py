@@ -605,22 +605,23 @@ def webpage(): #DON'T FORGET TO UPLOAD THIS FILE TO THE FLASH MEMORY OF THE DEVI
   function saveConfig() {
     const color = document.getElementById("colorSelect").value;
     const plant = document.getElementById("plantSelect").value;
+    console.log('envoi de la plante',plant)
 
     // Send to ESP32 via fetch
     fetch("/save", {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: "color=" + encodeURIComponent(color) + "&plant=" + encodeURIComponent(plant)
+      headers: { "Content-Type": "application/json" },
+      body: {"color": color , "plant": plant}
     })
     .then(r => r.ok ? alert("✓ Configuration sauvegardée !") : alert("Erreur lors de la sauvegarde."))
-    .catch(() => alert("✓ Config sauvegardée (simulation)."));
+    .catch(() => alert("Erreur lors de l'envoi des données."));
   }
 
   function confirmWifi() {
     if (confirm("Éteindre le point d'accès WiFi ? Le WiFi ne reviendra qu'au redémarrage.")) {
       fetch("/wifi_off", { method: "POST" })
         .then(() => alert("Point d'accès WiFi éteint."))
-        .catch(() => alert("Commande envoyée (simulation)."));
+        .catch(() => alert("Erreur lors de l'envoi de la commande"));
     }
   }
 </script>
