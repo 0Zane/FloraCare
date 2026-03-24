@@ -28,7 +28,6 @@ Le projet repose sur un circuit imprimé personnalisé (PCB) piloté par un **ES
 | **Capteur Humidité Sol** | Capteur d'humidité du sol analogique | **ADC** |
 | **Capteur Lumière** | BH1750 | **I2C** / |
 | **Alimentation** | Port USB-C  | **5V DC -> 3.3V DC** |
-| **Boîtier** | Boîtier imprimé en 3D (STL dans `/case`) | **Impression 3D** |
 
 > ⚡ Ce projet tourne sous **Micropython** et est prévu pour fonctionner en continu via USB-C.
 
