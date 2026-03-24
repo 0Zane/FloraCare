@@ -30,6 +30,7 @@ SSID = "FloraCare"
 WIFIPASSWORD = "pythonTNSI2026"
 MAX_USER = 4
 APWIFI = True   # We use this variable to check  if the wifi is on before trying to read the socket between ESP32-S3 and Webpage
+MAX_PACKETSIZE = 1024
 
 #Initializing sensor objects using libraries
 capteur = dht.DHT22(Pin(DHT_PIN))
@@ -102,7 +103,7 @@ while True:
         try:
             conn, addr = socketFloraCare.accept()
             print('Got a connection from %s' % str(addr))
-            request = conn.recv(1024).decode('utf-8')
+            request = conn.recv(MAX_PACKETSIZE).decode('utf-8')
             first_line = request.split('\r\n')[0]
             print(request)
 
