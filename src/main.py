@@ -9,7 +9,7 @@ import ujson
 
 #SENSOR PINS
 SOIL_PIN = 18
-DHT_PIN = 16
+DHT_PIN = 15
 LIGHT_SCL = 2
 LIGHT_SDA = 1
 
