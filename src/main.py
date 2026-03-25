@@ -5,7 +5,7 @@ import socket
 import network
 from webpage import webpage 
 import ujson
-
+from statehandler import plantstate
 
 #SENSOR PINS
 SOIL_PIN = 18
@@ -46,6 +46,8 @@ PLANT_MODELS = {
     "jacinthe": jacinthe
 }
 
+#For light average
+period = 0  
 
 #Plant stats
 norm_air_temp = 22
@@ -178,7 +180,31 @@ while True:
     temp, humi = read_temp()
     raw, soil_pct = read_soil()
     lux = read_light()
+
+    tempstate, humstate, moiststate = plantstate(temp, norm_air_temp, humi, norm_air_hum, soil_pct, norm_moisture)
+
+
+
+
+
+
+    #Instead of comparing instant light reception, it would be better to analise it on a longer period, so we will calculate the average of light on an arbitrary period
+    if period < 1000:
+        period += 1
+        lum_sum += lux
+    elif period >= 1000:
+        period = 0
+        avg_lum = lum_sum // period  
+
+        if avg_lum + 10 < norm_light: 
+            lightstate = -1
+            #no need to verify if there is too much light, plants don't feel bad if there is too much light
+
     
+
+    
+    
+
 
     time.sleep(2)
 
