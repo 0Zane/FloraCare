@@ -32,6 +32,13 @@ MAX_USER = 4
 APWIFI = True   # We use this variable to check  if the wifi is on before trying to read the socket between ESP32-S3 and Webpage
 MAX_PACKETSIZE = 1024
 
+
+#Plant stats
+norm_air_temp = 22
+norm_air_hum = 40
+norm_moisture = 30
+norm_light = 1
+ 
 #Initializing sensor objects using libraries
 capteur = dht.DHT22(Pin(DHT_PIN))
 adc = ADC(Pin(SOIL_PIN))
