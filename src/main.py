@@ -37,7 +37,17 @@ orchidee = { "name": 'ORCHIDÉE', "humid": 65, "temp": 22, "moisture": 55, "ligh
 cactus =   { "name": 'CACTUS',   "humid": 18, "temp": 28, "moisture": 20, "light": 85 }
 monstera= { "name": 'MONSTERA', "humid": 58, "temp": 24, "moisture": 60, "light": 40 }
 jacinthe= { "name": 'JACINTHE', "humid": 50, "temp": 14, "moisture": 50, "light": 70 }
-    
+
+#Defining plant state  :
+# 
+# -1 is not enough
+# 0 is perfect
+# 1 is too much
+
+temp_state = 0
+humid_state = 0
+moisture_state = 0
+light_state = 0
 
 
 #Plant stats
