@@ -7,7 +7,11 @@ def plantstate(planttemp,temptarget, planthum, humtarget, plantmoist,moisttarget
     MOIST_TOLERANCE = 15
     LIGHT_TOLERANCE = 20
 
-
+#Defining plant state  :
+# 
+# -1 is not enough
+# 0 is perfect
+# 1 is too much
     temp_state = 0
     hum_state = 0
     moist_state = 0

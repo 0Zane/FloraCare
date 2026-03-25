@@ -34,20 +34,17 @@ MAX_PACKETSIZE = 1024
 
 #Define plant models
 orchidee = { "name": 'ORCHIDÉE', "humid": 65, "temp": 22, "moisture": 55, "light": 45 }
-cactus =   { "name": 'CACTUS',   "humid": 18, "temp": 28, "moisture": 20, "light": 85 }
+cactus =   { "name": 'CACTUS',   "humid": 20, "temp": 28, "moisture": 20, "light": 85 }
 monstera= { "name": 'MONSTERA', "humid": 58, "temp": 24, "moisture": 60, "light": 40 }
 jacinthe= { "name": 'JACINTHE', "humid": 50, "temp": 14, "moisture": 50, "light": 70 }
 
-#Defining plant state  :
-# 
-# -1 is not enough
-# 0 is perfect
-# 1 is too much
-
-temp_state = 0
-humid_state = 0
-moisture_state = 0
-light_state = 0
+# Other dictionnary to link strings to each dictionnary (useful to select plant from HTTP POST reception)
+PLANT_MODELS = {
+    "orchidee": orchidee,
+    "cactus": cactus,
+    "monstera": monstera,
+    "jacinthe": jacinthe
+}
 
 
 #Plant stats
@@ -135,12 +132,27 @@ while True:
                 try:
                     parts = request.split('\r\n\r\n')
                     if len(parts) > 1:
-                        
                         body = parts[1]
                         data = ujson.loads(body)
-                        print("Sauvegarde de :", data.get("color"), data.get("plant"))
                         
+                      
+                        plant_name = data.get("plant") 
+                        
+                        selected_plant = PLANT_MODELS.get(plant_name)
+
+                        if selected_plant:
+                            norm_air_temp = selected_plant["temp"]
+                            norm_air_hum = selected_plant["humid"]
+                            norm_moisture = selected_plant["moisture"]
+                            norm_light = selected_plant["light"]
+                            
+                            print(f"Succès : {plant_name} configurée.")
+                            print(f"Objectif : Temp {norm_air_temp}°C, Hum {norm_air_hum}%")
+                        else:
+                            print(f"Erreur : La plante '{plant_name}' n'existe pas dans la base de données FloraCare ")
+
                         conn.send("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n")
+
                 except Exception as e:
                     print("Erreur POST:", e)
 
@@ -167,11 +179,6 @@ while True:
     raw, soil_pct = read_soil()
     lux = read_light()
     
-    print(f"Température : {temp}°C")
-    print(f"Humidité    : {humi}%")
-    print(f"Soil: raw={raw}  moisture={soil_pct}%")
-    print(f"Lumière     : {lux:.1f} lx")
-    print("---")
 
     time.sleep(2)
 
