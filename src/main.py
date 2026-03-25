@@ -48,7 +48,7 @@ PLANT_MODELS = {
 
 #For light average
 period = 0  
-
+lum_sum = 0
 #Plant stats
 norm_air_temp = 22
 norm_air_hum = 40
@@ -186,13 +186,13 @@ while True:
 
 
 
-
+    
 
     #Instead of comparing instant light reception, it would be better to analise it on a longer period, so we will calculate the average of light on an arbitrary period
     if period < 1000:
         period += 1
         lum_sum += lux
-    elif period >= 1000:
+    elif period >= 1000  :
         period = 0
         avg_lum = lum_sum // period  
 
@@ -202,9 +202,10 @@ while True:
 
     
 
-    
+
     
 
 
     time.sleep(2)
+
 
