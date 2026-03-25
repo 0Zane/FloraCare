@@ -483,6 +483,14 @@ def webpage(): #DON'T FORGET TO UPLOAD THIS FILE TO THE FLASH MEMORY OF THE DEVI
     </div>
 
     <div class="sensor-line">
+      <span class="sensor-label">HUMIDITÉ SOL</span>
+      <div class="sensor-bar-wrap">
+        <div class="sensor-bar" id="barMoisture" style="width:55%"></div>
+      </div>
+      <span class="sensor-val" id="valMoisture">55%</span>
+    </div>
+
+    <div class="sensor-line">
       <span class="sensor-label">LUMIÈRE</span>
       <div class="sensor-bar-wrap">
         <div class="sensor-bar" id="barLight" style="width:45%"></div>
@@ -573,10 +581,10 @@ def webpage(): #DON'T FORGET TO UPLOAD THIS FILE TO THE FLASH MEMORY OF THE DEVI
 
 <script>
   const plants = {
-    orchidee: { name: 'ORCHIDÉE', humid: 65, temp: 22, light: 45 },
-    cactus:   { name: 'CACTUS',   humid: 18, temp: 28, light: 85 },
-    monstera: { name: 'MONSTERA', humid: 58, temp: 24, light: 40 },
-    jacinthe: { name: 'JACINTHE', humid: 50, temp: 14, light: 70 },
+    orchidee: { name: 'ORCHIDÉE', humid: 65, temp: 22, moisture: 55, light: 45 },
+    cactus:   { name: 'CACTUS',   humid: 18, temp: 28, moisture: 20, light: 85 },
+    monstera: { name: 'MONSTERA', humid: 58, temp: 24, moisture: 60, light: 40 },
+    jacinthe: { name: 'JACINTHE', humid: 50, temp: 14, moisture: 50, light: 70 },
   };
 
   function selectPlant(val) {
@@ -598,6 +606,9 @@ def webpage(): #DON'T FORGET TO UPLOAD THIS FILE TO THE FLASH MEMORY OF THE DEVI
     const tempPct = ((p.temp - 5) / 35) * 100;
     document.getElementById('barTemp').style.width = tempPct + '%';
     document.getElementById('valTemp').textContent = p.temp + '°C';
+
+    document.getElementById('barMoisture').style.width = p.moisture + '%';
+    document.getElementById('valMoisture').textContent = p.moisture + '%';
 
     document.getElementById('barLight').style.width = p.light + '%';
     document.getElementById('valLight').textContent = Math.round(p.light * 10) + 'lx';
