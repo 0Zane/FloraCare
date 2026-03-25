@@ -32,6 +32,13 @@ MAX_USER = 4
 APWIFI = True   # We use this variable to check  if the wifi is on before trying to read the socket between ESP32-S3 and Webpage
 MAX_PACKETSIZE = 1024
 
+#Define plant models
+orchidee = { "name": 'ORCHIDÉE', "humid": 65, "temp": 22, "moisture": 55, "light": 45 }
+cactus =   { "name": 'CACTUS',   "humid": 18, "temp": 28, "moisture": 20, "light": 85 }
+monstera= { "name": 'MONSTERA', "humid": 58, "temp": 24, "moisture": 60, "light": 40 }
+jacinthe= { "name": 'JACINTHE', "humid": 50, "temp": 14, "moisture": 50, "light": 70 }
+    
+
 
 #Plant stats
 norm_air_temp = 22
