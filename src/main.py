@@ -134,6 +134,7 @@ while True:
     if socketFloraCare and APWIFI:
         try:
             conn, addr = socketFloraCare.accept()
+            conn.settimeout(2.0)
             print("Connection from", addr)
             request    = conn.recv(MAX_PACKETSIZE).decode('utf-8')
             first_line = request.split('\r\n')[0]
