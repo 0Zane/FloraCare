@@ -23,9 +23,8 @@ L’objectif du projet *FloraCare* est donc de simplifier la compréhension des 
 - Développement en Python  
 - Conception du circuit imprimé (PCB)  
 - Intégration des fonctions capteurs dans le code  
-- Mise en place du Wi-Fi via ESP  
-- Développement de l’interface web (FloraCare)  
-- Rédaction de la documentation  
+- Mise en place du Wi-Fi et interface web via ESP  
+
 
 **Alexander K. :**
 - Développement en Python  
