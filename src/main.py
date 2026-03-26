@@ -183,11 +183,6 @@ while True:
 
     tempstate, humstate, moiststate = plantstate(temp, norm_air_temp, humi, norm_air_hum, soil_pct, norm_moisture)
 
-
-
-
-    
-
     #Instead of comparing instant light reception, it would be better to analise it on a longer period, so we will calculate the average of light on an arbitrary period
     if period < 1000:
         period += 1
@@ -200,8 +195,30 @@ while True:
             lightstate = -1
             #no need to verify if there is too much light, plants don't feel bad if there is too much light
 
-    
+    if tempstate == 1:
+        print("Votre plante a trop chaud")
 
+    elif tempstate == -1:
+        print("Votre plante a froid")
+    
+    if moiststate == 1:
+        print("votr plante est trop submergée")
+
+    elif moiststate == -1:
+        print("Votre plante est en sécheresse, veuillez arroser la plante.")
+
+    if humstate == 1:
+        print("L'air est trop humide pour votre plante.")
+
+    elif humstate == -1:
+        print("L'air est trop sec pour votre plante")
+
+    if lightstate == 1:
+        print("L'environement est bien assez lumineux pour votre plante.")
+
+    elif lightstate == -1:
+        print("Votre plante est en manque de lumière")
+    
 
     
 
