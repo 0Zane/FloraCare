@@ -7,8 +7,8 @@ Standard MicroPython only — no LVGL, no external libraries.
 import machine
 import time
 import math
-import random
-import framebuf
+import framebuf  # MicroPython built-in
+from drivers.display.anims.idle import IdleAnim
 
 # --- Pins ---
 _RES = 9
@@ -200,6 +200,9 @@ class Face:
     MX = (W - 160) // 2        # mouth left-x (centered)
     MY = 187                    # mouth top-y
 
+    BG   = BG
+    BLUE = BLUE
+
     def __init__(self, lcd):
         self.lcd = lcd
         self.bar = StatusBar(lcd)
@@ -224,13 +227,7 @@ class Face:
         self._BATCH = 8
         self._batch_buf = bytearray(ew * 3 * self._BATCH)
 
-        # Blink state
-        self.bh = 0   # eyelid height in pixels
-        self.bd = 0   # direction: 0=idle, 1=closing, -1=opening
-        now = time.ticks_ms()
-        self.b_at     = now + random.randint(3000, 5000)
-        self._bstep_at = 0   # next allowed animation step timestamp
-        self._BSTEP_MS = 22  # ms between blink frames (7 frames × 22ms ≈ 154ms per half)
+        self._anim = IdleAnim()
 
     # --- Rendering ---
 
@@ -316,44 +313,14 @@ class Face:
         """Push new sensor readings to the status bar."""
         self.bar.update(temp, humi, soil, lux)
 
+    def set_anim(self, anim):
+        """Switch to a new animation. Redraws the full screen immediately."""
+        self._anim = anim
+        anim.draw(self)
+
     def update(self):
         """Advance one animation frame. Call in a tight loop."""
-        now = time.ticks_ms()
-
-        if self.bd == 0:
-            if time.ticks_diff(now, self.b_at) >= 0:
-                self.bd = 1
-            return  # nothing to draw between blinks
-
-        # Rate-limit animation steps so total blink speed stays consistent
-        if time.ticks_diff(now, self._bstep_at) < 0:
-            return
-        self._bstep_at = now + self._BSTEP_MS
-
-        # Blink: closing
-        if self.bd == 1:
-            oh = self.bh
-            self.bh = min(self.bh + 6, self.EH // 2)
-            ey, eh, ew = self.EY, self.EH, self.EW
-            strip_h = self.bh - oh
-            if strip_h > 0:
-                for ex in (self.LX, self.RX):
-                    self.lcd.fill(ex, ey + oh, ew, strip_h, BG)
-                    self.lcd.fill(ex, ey + eh - self.bh, ew, strip_h, BG)
-            if self.bh >= self.EH // 2:
-                self.bd = -1
-
-        # Blink: opening
-        elif self.bd == -1:
-            oh = self.bh
-            self.bh = max(self.bh - 6, 0)
-            ey, eh = self.EY, self.EH
-            for ex in (self.LX, self.RX):
-                self._band(ex, ey + self.bh, ey + oh - 1)
-                self._band(ex, ey + eh - oh, ey + eh - 1 - self.bh)
-            if self.bh <= 0:
-                self.bd = 0
-                self.b_at = now + random.randint(3000, 5000)
+        self._anim.tick(self)
 
 
 def main():
