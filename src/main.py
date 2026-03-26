@@ -193,7 +193,8 @@ while True:
 
         if avg_lum + 10 < norm_light: 
             lightstate = -1
-            #no need to verify if there is too much light, plants don't feel bad if there is too much light
+
+        
 
     if tempstate == 1:
         print("Votre plante a trop chaud")
@@ -213,11 +214,9 @@ while True:
     elif humstate == -1:
         print("L'air est trop sec pour votre plante")
 
-    if lightstate == 1:
-        print("L'environement est bien assez lumineux pour votre plante.")
 
     elif lightstate == -1:
-        print("Votre plante est en manque de lumière")
+        print("Votre plante est en manque de lumière depuis quelques temps.")
     
 
     
