@@ -14,6 +14,14 @@ DHT_PIN   = 15
 LIGHT_SCL = 2
 LIGHT_SDA = 1
 
+# --- Screen pins ---
+RES  = 9
+CS   = 10
+MOSI = 11
+SCLK = 12
+LED  = 13
+DC   = 14
+
 # DC pin shared between DHT22 and the display driver (both on GPIO 15)
 # After every DHT read, face.lcd.restore_dc() must be called to reclaim it.
 DISPLAY_DC = 15
@@ -120,7 +128,7 @@ try:
     socketFloraCare.setblocking(False)
     print("Server listening on port 80")
 except Exception as e:
-    print("Error creating socket:", e)
+    print(f"Error creating socket: {e}")
     socketFloraCare = None
 
 # --- Main loop ---
@@ -153,11 +161,10 @@ while True:
                             norm_air_hum  = selected["humid"]
                             norm_moisture = selected["moisture"]
                             norm_light    = selected["light"]
-                            print("Plant set:", plant_name,
-                                  "— target temp", norm_air_temp,
-                                  "humidity", norm_air_hum)
+                            print(f"Succès : {plant_name} configurée.")
+                            print(f"Objectif : Temp {norm_air_temp}°C, Hum {norm_air_hum}%")
                         else:
-                            print("Unknown plant:", plant_name)
+                            print(f"Erreur : La plante '{plant_name}' n'existe pas dans la base de données FloraCare")
 
                         conn.send("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n")
                 except Exception as e:
@@ -204,8 +211,24 @@ while True:
                 lum_sum = 0
                 if avg_lum + 10 < norm_light:
                     lightstate = -1
+                    print("Votre plante est en manque de lumière depuis quelques temps.")
+
+            if tempstate == 1:
+                print("Votre plante a trop chaud.")
+            elif tempstate == -1:
+                print("Votre plante a froid.")
+
+            if moiststate == 1:
+                print("Votre plante est trop submergée.")
+            elif moiststate == -1:
+                print("Votre plante est en sécheresse, veuillez arroser la plante.")
+
+            if humstate == 1:
+                print("L'air est trop humide pour votre plante.")
+            elif humstate == -1:
+                print("L'air est trop sec pour votre plante.")
 
         except Exception as e:
-            print("Sensor error:", e)
+            print(f"Sensor error: {e}")
 
         face.set_sensors(_temp, _humi, _soil_pct, _lux)
