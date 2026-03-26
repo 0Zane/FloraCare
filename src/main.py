@@ -46,7 +46,7 @@ PLANT_MODELS = {
 # --- Light average state ---
 period  = 0
 lum_sum = 0
-
+lightstate = 0
 # --- Plant target thresholds (updated when a plant is selected via the web UI) ---
 norm_air_temp = 22
 norm_air_hum  = 40
