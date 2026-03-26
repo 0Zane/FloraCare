@@ -4,7 +4,7 @@ def plantstate(planttemp,temptarget, planthum, humtarget, plantmoist,moisttarget
     #Defining plant tolerance to avoid too strict analysis
     TEMP_TOLERANCE = 6 
     HUM_TOLERANCE = 15
-    MOIST_TOLERANCE = 5
+    MOIST_TOLERANCE = 10
 
 #Defining plant state  :
 # 
