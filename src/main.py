@@ -7,6 +7,8 @@ from webpage import webpage
 import ujson
 from statehandler import plantstate
 from drivers.display.robot_face import Display as FaceDisplay, Face
+from drivers.display.anims.idle import IdleAnim
+from drivers.display.anims.angry import AngryAnim
 
 # --- Sensor pins ---
 SOIL_PIN  = 18
@@ -118,7 +120,7 @@ def launch_ap():
 launch_ap()
 
 face = Face(FaceDisplay())
-face.draw()
+face.set_anim(IdleAnim())
 
 try:
     socketFloraCare = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -213,6 +215,13 @@ while True:
                     lightstate = -1
                     print("Votre plante est en manque de lumière depuis quelques temps.")
 
+            if any(s != 0 for s in (tempstate, humstate, moiststate, lightstate)):
+                if not isinstance(face._anim, AngryAnim):
+                    face.set_anim(AngryAnim())
+            else:
+                if not isinstance(face._anim, IdleAnim):
+                    face.set_anim(IdleAnim())
+
             if tempstate == 1:
                 print("Votre plante a trop chaud.")
             elif tempstate == -1:
@@ -232,3 +241,4 @@ while True:
             print(f"Sensor error: {e}")
 
         face.set_sensors(_temp, _humi, _soil_pct, _lux)
+        
