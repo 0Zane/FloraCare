@@ -28,7 +28,7 @@ def plantstate(planttemp,temptarget, planthum, humtarget, plantmoist,moisttarget
 
     if plantmoist + MOIST_TOLERANCE < moisttarget:
         moist_state = -1
-    elif plantmoist - MOIST_TOLERANCE  > moisttarget:
+    elif plantmoist  - MOIST_TOLERANCE > moisttarget:
         moist_state = 1
 
 

@@ -58,7 +58,7 @@ lightstate = 0
 # --- Plant target thresholds (updated when a plant is selected via the web UI) ---
 norm_air_temp = 22
 norm_air_hum  = 40
-norm_moisture = 30
+norm_moisture = 50
 norm_light    = 1
 
 # --- Sensor initialisation ---
