@@ -3,68 +3,67 @@ import time
 from machine import Pin, ADC, I2C
 import socket
 import network
-from webpage import webpage 
+from webpage import webpage
 import ujson
 from statehandler import plantstate
+from drivers.display.robot_face import Display as FaceDisplay, Face
 
-#SENSOR PINS
-SOIL_PIN = 18
-DHT_PIN = 15
+# --- Sensor pins ---
+SOIL_PIN  = 18
+DHT_PIN   = 15
 LIGHT_SCL = 2
 LIGHT_SDA = 1
 
-#SCREEN PINS
-RES = 9
-CS = 10
-MOSI = 11
-SCLK = 12
-LED = 13
-DC = 14
+# DC pin shared between DHT22 and the display driver (both on GPIO 15)
+# After every DHT read, face.lcd.restore_dc() must be called to reclaim it.
+DISPLAY_DC = 15
 
-#HARDWARE ADDRESS
-BH1750_ADDR = 0x23
+# --- Hardware addresses ---
+BH1750_ADDR       = 0x23
 BH1750_CONT_H_RES = 0x10
 
-#FloraCareWIFI
-SSID = "FloraCare"
-WIFIPASSWORD = "pythonTNSI2026"
-MAX_USER = 4
-APWIFI = True   # We use this variable to check  if the wifi is on before trying to read the socket between ESP32-S3 and Webpage
+# --- Wi-Fi access point ---
+SSID          = "FloraCare"
+WIFIPASSWORD  = "pythonTNSI2026"
+MAX_USER      = 4
 MAX_PACKETSIZE = 1024
+APWIFI = True  # set to False when the AP is disabled at runtime
 
-#Define plant models
-orchidee = { "name": 'ORCHIDÉE', "humid": 65, "temp": 22, "moisture": 55, "light": 45 }
-cactus =   { "name": 'CACTUS',   "humid": 20, "temp": 28, "moisture": 20, "light": 85 }
-monstera= { "name": 'MONSTERA', "humid": 58, "temp": 24, "moisture": 60, "light": 40 }
-jacinthe= { "name": 'JACINTHE', "humid": 50, "temp": 14, "moisture": 50, "light": 70 }
+# --- Plant models ---
+orchidee = {"name": "ORCHIDEE", "humid": 65, "temp": 22, "moisture": 55, "light": 45}
+cactus   = {"name": "CACTUS",   "humid": 20, "temp": 28, "moisture": 20, "light": 85}
+monstera = {"name": "MONSTERA", "humid": 58, "temp": 24, "moisture": 60, "light": 40}
+jacinthe = {"name": "JACINTHE", "humid": 50, "temp": 14, "moisture": 50, "light": 70}
 
-# Other dictionnary to link strings to each dictionnary (useful to select plant from HTTP POST reception)
+# Dictionary mapping POST plant names to their model
 PLANT_MODELS = {
     "orchidee": orchidee,
-    "cactus": cactus,
+    "cactus":   cactus,
     "monstera": monstera,
-    "jacinthe": jacinthe
+    "jacinthe": jacinthe,
 }
 
-#For light average
-period = 0  
+# --- Light average state ---
+period  = 0
 lum_sum = 0
-#Plant stats
+
+# --- Plant target thresholds (updated when a plant is selected via the web UI) ---
 norm_air_temp = 22
-norm_air_hum = 40
+norm_air_hum  = 40
 norm_moisture = 30
-norm_light = 1
- 
-#Initializing sensor objects using libraries
+norm_light    = 1
+
+# --- Sensor initialisation ---
 capteur = dht.DHT22(Pin(DHT_PIN))
-adc = ADC(Pin(SOIL_PIN))
-i2c = I2C(0, sda=Pin(LIGHT_SDA), scl=Pin(LIGHT_SCL), freq=400000)
+adc     = ADC(Pin(SOIL_PIN))
+i2c     = I2C(0, sda=Pin(LIGHT_SDA), scl=Pin(LIGHT_SCL), freq=400000)
 try:
     i2c.writeto(BH1750_ADDR, bytes([BH1750_CONT_H_RES]))
 except:
-    print("Could not write address on light sensor")
+    print("Light sensor not found — skipping init")
 
-#______________Functions to read sensors______________
+
+# --- Sensor read functions ---
 
 def read_light():
     try:
@@ -72,6 +71,7 @@ def read_light():
         return (data[0] << 8 | data[1]) / 1.2
     except:
         return -1
+
 
 def read_soil():
     try:
@@ -82,6 +82,7 @@ def read_soil():
     except:
         return -1, -1
 
+
 def read_temp():
     try:
         capteur.measure()
@@ -91,42 +92,50 @@ def read_temp():
     except:
         return -1, -1
 
-#______________Function to launch the WIFI access point______________
+
+# --- Wi-Fi access point ---
+
 def launch_ap():
     try:
         sta = network.WLAN(network.AP_IF)
         sta.active(True)
         sta.config(essid=SSID, authmode=network.AUTH_WPA_WPA2_PSK, password=WIFIPASSWORD)
-        print('Network config:', sta.ifconfig())
+        print("Network config:", sta.ifconfig())
     except:
         print("Failed to launch AP")
 
 
+# --- Boot sequence ---
 
-#______________MAIN CODE AT BOOTING______________
-
-# Launch AP and create socket ONCE, outside loop
 launch_ap()
 
+face = Face(FaceDisplay())
+face.draw()
 
 try:
     socketFloraCare = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     socketFloraCare.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     socketFloraCare.bind(('', 80))
     socketFloraCare.listen(MAX_USER)
-    socketFloraCare.setblocking(False) 
+    socketFloraCare.setblocking(False)
     print("Server listening on port 80")
 except Exception as e:
-    print(f"Error creating socket: {e}")
+    print("Error creating socket:", e)
     socketFloraCare = None
 
-# Main loop
+# --- Main loop ---
+
+_sensor_at = time.ticks_ms()
+_temp = _humi = _soil_pct = _lux = -1
+
 while True:
+    face.update()
+
     if socketFloraCare and APWIFI:
         try:
             conn, addr = socketFloraCare.accept()
-            print('Got a connection from %s' % str(addr))
-            request = conn.recv(MAX_PACKETSIZE).decode('utf-8')
+            print("Connection from", addr)
+            request    = conn.recv(MAX_PACKETSIZE).decode('utf-8')
             first_line = request.split('\r\n')[0]
             print(request)
 
@@ -134,94 +143,68 @@ while True:
                 try:
                     parts = request.split('\r\n\r\n')
                     if len(parts) > 1:
-                        body = parts[1]
-                        data = ujson.loads(body)
-                        
-                      
-                        plant_name = data.get("plant") 
-                        
-                        selected_plant = PLANT_MODELS.get(plant_name)
+                        data       = ujson.loads(parts[1])
+                        plant_name = data.get("plant")
+                        selected   = PLANT_MODELS.get(plant_name)
 
-                        if selected_plant:
-                            norm_air_temp = selected_plant["temp"]
-                            norm_air_hum = selected_plant["humid"]
-                            norm_moisture = selected_plant["moisture"]
-                            norm_light = selected_plant["light"]
-                            
-                            print(f"Succès : {plant_name} configurée.")
-                            print(f"Objectif : Temp {norm_air_temp}°C, Hum {norm_air_hum}%")
+                        if selected:
+                            norm_air_temp = selected["temp"]
+                            norm_air_hum  = selected["humid"]
+                            norm_moisture = selected["moisture"]
+                            norm_light    = selected["light"]
+                            print("Plant set:", plant_name,
+                                  "— target temp", norm_air_temp,
+                                  "humidity", norm_air_hum)
                         else:
-                            print(f"Erreur : La plante '{plant_name}' n'existe pas dans la base de données FloraCare ")
+                            print("Unknown plant:", plant_name)
 
                         conn.send("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n")
-
                 except Exception as e:
-                    print("Erreur POST:", e)
+                    print("POST /save error:", e)
 
             elif "POST /wifi_off" in first_line:
-                conn.send("HTTP/1.1 200 OK\r\n\r\nWifi en cours de desactivation...")
+                conn.send("HTTP/1.1 200 OK\r\n\r\nDisabling Wi-Fi...")
                 conn.close()
                 time.sleep(1)
                 network.WLAN(network.AP_IF).active(False)
                 APWIFI = False
-                print("WIFI OFF")
+                print("Wi-Fi AP disabled")
+
             else:
-                    response = webpage()
-                    conn.send("HTTP/1.0 200 OK\r\nContent-type: text/html\r\n\r\n")  
-                    conn.send(response)
-                    conn.close()
-        except :
-            pass  # No connection available
-    
+                response = webpage()
+                conn.send("HTTP/1.0 200 OK\r\nContent-type: text/html\r\n\r\n")
+                conn.send(response)
+                conn.close()
 
+        except:
+            pass  # no incoming connection — non-blocking accept raises here
 
+    # Read sensors every 2 s without blocking the animation loop
+    if time.ticks_diff(time.ticks_ms(), _sensor_at) >= 0:
+        _sensor_at = time.ticks_ms() + 2000
 
-    # Read sensors every iteration
-    temp, humi = read_temp()
-    raw, soil_pct = read_soil()
-    lux = read_light()
+        try:
+            _temp, _humi = read_temp()
+            # DHT22 and display DC share GPIO 15 — restore pin direction after DHT use
+            face.lcd.restore_dc()
+            _raw, _soil_pct = read_soil()
+            _lux            = read_light()
 
-    tempstate, humstate, moiststate = plantstate(temp, norm_air_temp, humi, norm_air_hum, soil_pct, norm_moisture)
+            tempstate, humstate, moiststate = plantstate(
+                _temp, norm_air_temp, _humi, norm_air_hum, _soil_pct, norm_moisture
+            )
 
-    #Instead of comparing instant light reception, it would be better to analise it on a longer period, so we will calculate the average of light on an arbitrary period
-    if period < 1000:
-        period += 1
-        lum_sum += lux
-    elif period >= 1000  :
-        period = 0
-        avg_lum = lum_sum // period  
+            if period < 1000:
+                period  += 1
+                lum_sum += _lux
+            elif period >= 1000:
+                period  = 0
+                avg_lum = lum_sum // 1000
+                lum_sum = 0
+                if avg_lum + 10 < norm_light:
+                    lightstate = -1
 
-        if avg_lum + 10 < norm_light: 
-            lightstate = -1
+        except Exception as e:
+            print("Sensor error:", e)
 
-        
-
-    if tempstate == 1:
-        print("Votre plante a trop chaud")
-
-    elif tempstate == -1:
-        print("Votre plante a froid")
-    
-    if moiststate == 1:
-        print("votr plante est trop submergée")
-
-    elif moiststate == -1:
-        print("Votre plante est en sécheresse, veuillez arroser la plante.")
-
-    if humstate == 1:
-        print("L'air est trop humide pour votre plante.")
-
-    elif humstate == -1:
-        print("L'air est trop sec pour votre plante")
-
-
-    elif lightstate == -1:
-        print("Votre plante est en manque de lumière depuis quelques temps.")
-    
-
-    
-
-
-    time.sleep(2)
-
-
+        face.set_sensors(_temp, _humi, _soil_pct, _lux)
