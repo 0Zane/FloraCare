@@ -4,6 +4,8 @@
 
 Ceci est le circuit imprimé (PCB) du projet FloraCare, conçu pour contrôler et monitorer les conditions de croissance des plantes.
 
+![Floracare](https://github.com/0Zane/FloraCare/blob/725fefea09342597018dde95f6bea44f7875f587/assets/floracarepcbpic.jpeg)
+
 ## 🛠 Conception
 
 - **Outil de conception** : KiCad
@@ -30,6 +32,7 @@ L'assemblage est fait à la main par @0Zane
 
 - **Fabricant** : JLCPCB
 - **Format d'export** : Gerber + fichiers de perçage
+
 
 ## 📦 Contenu du Dossier
 
