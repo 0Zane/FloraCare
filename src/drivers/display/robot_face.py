@@ -82,7 +82,7 @@ class Display:
         self._cmd(0xC1, b'\x41')
         self._cmd(0xC5, b'\x00\x12\x80')
         # Display
-        self._cmd(0x36, b'\xE8')  # MADCTL: landscape + BGR (MY=1, MX=1, MV=1, BGR=1)
+        self._cmd(0x36, b'\x28')  # MADCTL: landscape rotated 180 + BGR (MY=0, MX=0, MV=1, BGR=1)
         self._cmd(0x3A, b'\x66')  # 18-bit RGB666
         self._cmd(0xB0, b'\x00')  # Interface mode control
         self._cmd(0xB1, b'\xA0')  # Frame rate 60 Hz
