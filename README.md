@@ -36,11 +36,11 @@ Le projet repose sur un circuit imprimé personnalisé (PCB) piloté par un **ES
 ## 🚀 Démarrage rapide
 
 1. Flasher le firmware MicroPython sur l'ESP32-S3.
-2. Copier le contenu de `src/` sur la mémoire flash du microcontrôleur.
-3. Connecter les capteurs sur les broches définies dans.
+2. Copier tous les fichiers python sur la mémoire flash du microcontrôleur.
+3. Connecter les capteurs sur les broches définies dans le fichier main.py.
 4. Brancher en USB-C et observer les lectures sur l'écran.
 
-
+![](https://github.com/0Zane/FloraCare/blob/271e3f572fed55735c0cb3f5bc3360cbd0f8c488/assets/floracareproject.jpg)
 
 ## 🌐 Interface Web WiFi
 
