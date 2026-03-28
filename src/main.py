@@ -24,9 +24,6 @@ SCLK = 12
 LED  = 13
 DC   = 14
 
-# DC pin shared between DHT22 and the display driver (both on GPIO 15)
-# After every DHT read, face.lcd.restore_dc() must be called to reclaim it.
-DISPLAY_DC = 15
 
 # --- Hardware addresses ---
 BH1750_ADDR       = 0x23

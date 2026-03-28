@@ -11,12 +11,13 @@ import framebuf  # MicroPython built-in
 from drivers.display.anims.idle import IdleAnim
 
 # --- Pins ---
-_RES = 9
-_CS = 10
+_RES  = 9
+_CS   = 10
 _MOSI = 11
 _SCLK = 12
-_LED = 13
-_DC = 15
+_LED  = 13
+_DC   = 14
+_MISO = 14
 
 # --- Screen ---
 W, H = 480, 320
@@ -43,7 +44,7 @@ class Display:
         self.spi = machine.SoftSPI(
             baudrate=40_000_000, polarity=0, phase=0,
             sck=machine.Pin(_SCLK), mosi=machine.Pin(_MOSI),
-            miso=machine.Pin(14),
+            miso=machine.Pin(_MISO),
         )
         self.cs = machine.Pin(_CS, machine.Pin.OUT, value=1)
         self.dc = machine.Pin(_DC, machine.Pin.OUT, value=1)
