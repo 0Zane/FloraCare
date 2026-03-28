@@ -69,7 +69,6 @@ FloraCare crée un **point d'accès WiFi (AP)** pour permettre l'accès à dista
 
 - `src/` : code Micropython (main, bibliothèques, config)
 - `hardware/` : fichiers Gerber et PCB (KiCad)
-- `case/` : modèles STL pour impression 3D
 - `README.md` : documentation du projet et mode d'emploi
 - `presentation.md` : présentation du projet
 - `requirements.txt` : Librairies utilisées à installer
