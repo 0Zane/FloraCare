@@ -26,6 +26,7 @@ W, H = 480, 320
 BG   = b'\x04\x08\x18'  # ~#040818 deep black-navy
 BLUE = b'\x00\xFC\xFC'  # max brightness cyan
 DIM  = b'\x00\x60\x70'  # dimmed cyan for labels (~38% brightness)
+RED  = b'\xFC\x00\x00'  # alert red for out-of-range values
 
 # --- Sensor bar layout (bottom of screen) ---
 _SEP_Y  = 260          # separator line y (mouth ends at 215+38=253)
@@ -131,6 +132,7 @@ class StatusBar:
     def __init__(self, lcd):
         self.lcd = lcd
         self._strs = [""] * 4
+        self._states = [0] * 4  # 0 = normal, != 0 = out of range
 
     def draw_static(self):
         """Draw separator line, background and static labels. Call after full screen fill."""
@@ -145,6 +147,7 @@ class StatusBar:
             lx = cx - len(lbl) * 4   # scale=1: 8px/char, center
             self._draw_text(lx, _LBL_Y, lbl, scale=1, color=DIM)
         self._strs = [""] * 4        # force value redraw on next update()
+        self._states = [0] * 4
 
     def _draw_text(self, x, y, text, scale=2, color=BLUE):
         n = len(text)
@@ -175,8 +178,10 @@ class StatusBar:
                 spi.write(mv)
         lcd.stop()
 
-    def update(self, temp, humi, soil, lux):
-        """Redraw only columns whose value has changed."""
+    def update(self, temp, humi, soil, lux, states=None):
+        """Redraw only columns whose value or alert state has changed."""
+        if states is None:
+            states = [0, 0, 0, 0]
         strs = [
             "{:.1f}C".format(temp) if temp >= 0 else "--.-C",
             "{}%".format(int(round(humi))) if humi >= 0 else "--%",
@@ -184,11 +189,13 @@ class StatusBar:
             "{}".format(int(lux))          if lux  >= 0 else "----",
         ]
         for i, (s, cx, col_x) in enumerate(zip(strs, _COL_CX, _COL_XS)):
-            if s != self._strs[i]:
+            if s != self._strs[i] or states[i] != self._states[i]:
+                color = RED if states[i] != 0 else BLUE
                 self.lcd.fill(col_x + 1, _VAL_Y, _COL_W - 2, 16, BG)
                 vx = cx - len(s) * 8   # scale=2: 16px/char, center
-                self._draw_text(vx, _VAL_Y, s, scale=2, color=BLUE)
+                self._draw_text(vx, _VAL_Y, s, scale=2, color=color)
         self._strs = strs
+        self._states = states
 
 
 class Face:
@@ -310,9 +317,9 @@ class Face:
         self._mouth()
         self.bar.draw_static()
 
-    def set_sensors(self, temp, humi, soil, lux):
+    def set_sensors(self, temp, humi, soil, lux, states=None):
         """Push new sensor readings to the status bar."""
-        self.bar.update(temp, humi, soil, lux)
+        self.bar.update(temp, humi, soil, lux, states)
 
     def set_anim(self, anim):
         """Switch to a new animation. Redraws the full screen immediately."""

@@ -234,8 +234,10 @@ while True:
             elif humstate == -1:
                 print("L'air est trop sec pour votre plante.")
 
+            face.set_sensors(_temp, _humi, _soil_pct, _lux,
+                             [tempstate, humstate, moiststate, lightstate])
+
         except Exception as e:
             print(f"Sensor error: {e}")
-
-        face.set_sensors(_temp, _humi, _soil_pct, _lux)
+            face.set_sensors(_temp, _humi, _soil_pct, _lux)
         
