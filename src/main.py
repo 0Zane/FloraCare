@@ -41,6 +41,7 @@ orchidee = {"name": "ORCHIDEE", "humid": 65, "temp": 22, "moisture": 55, "light"
 cactus   = {"name": "CACTUS",   "humid": 20, "temp": 28, "moisture": 20, "light": 85}
 monstera = {"name": "MONSTERA", "humid": 58, "temp": 24, "moisture": 60, "light": 40}
 jacinthe = {"name": "JACINTHE", "humid": 50, "temp": 14, "moisture": 50, "light": 70}
+graptosedum = {"name": "GRAPTOSEDUM", "humid": 40, "temp":22, "moisture": 40, "light": 50 }
 
 # Dictionary mapping POST plant names to their model
 PLANT_MODELS = {
@@ -48,6 +49,7 @@ PLANT_MODELS = {
     "cactus":   cactus,
     "monstera": monstera,
     "jacinthe": jacinthe,
+    "graptosedum": graptosedum
 }
 
 # --- Light average state ---
