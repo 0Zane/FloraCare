@@ -523,6 +523,7 @@ def webpage(): #DON'T FORGET TO UPLOAD THIS FILE TO THE FLASH MEMORY OF THE DEVI
       <option value="cactus">Cactus</option>
       <option value="monstera">Monstera Deliciosa</option>
       <option value="jacinthe">Jacinthe</option>
+      <option value="graptosedum">Graptosedum</option>
     </select>
   </div>
 
@@ -565,6 +566,15 @@ def webpage(): #DON'T FORGET TO UPLOAD THIS FILE TO THE FLASH MEMORY OF THE DEVI
         <strong>Lumière :</strong> vive
       </div>
     </div>
+
+    <div class="plant-card" id="card-graptosedum" onclick="selectCard('graptosedum')">
+      <div class="card-name">Graptosedum</div>
+      <div class="card-stat">
+        <strong>Temp :</strong> 20–24°C<br>
+        <strong>Humid :</strong> 40%<br>
+        <strong>Lumière :</strong> modérée
+      </div>
+    </div>
   </div>
 
   <div class="notice">
@@ -585,6 +595,7 @@ def webpage(): #DON'T FORGET TO UPLOAD THIS FILE TO THE FLASH MEMORY OF THE DEVI
     cactus:   { name: 'CACTUS',   humid: 18, temp: 28, moisture: 20, light: 85 },
     monstera: { name: 'MONSTERA', humid: 58, temp: 24, moisture: 60, light: 40 },
     jacinthe: { name: 'JACINTHE', humid: 50, temp: 14, moisture: 50, light: 70 },
+    graptosedum: { name: 'GRAPTOSEDUM', humid: 40, temp: 22, moisture: 40, light: 50 },
   };
 
   function selectPlant(val) {
