@@ -1,127 +1,127 @@
-# 🌱 FloraCare — Présentation du projet
+﻿# 🌱 FloraCare — Project Presentation
 
-## 1. Présentation globale du projet
+## 1. Overall Project Overview
 
-L’idée du projet est née grâce à Arnaud (Zane), en s’appuyant sur ses connaissances en électronique et en Python, en lien avec le thème proposé.
+The project idea was born thanks to Zane, leveraging his knowledge of electronics and Python in connection with the proposed theme.
 
-Nous nous sommes posé la problématique suivante :  
-**Comment aider les humains à s’occuper de leurs plantes de manière ludique et intuitive ?**
+We asked ourselves the following question:  
+**How can we help humans care for their plants in a playful and intuitive way?**
 
-L’objectif du projet *FloraCare* est donc de simplifier la compréhension des besoins d’une plante en lui donnant une forme de “communication” avec l’humain, grâce à des capteurs et une interface claire.
-
----
-
-## 2. Organisation du travail
-
-### 👥 Équipe
-- **Arnaud D. élève de 1ère NSI amateur de C++ et python et d'éléctronique.**
-- **Alexander K. élève de 1ère NSI passionné de python**
-
-### 🛠️ Répartition des rôles
-
-**Arnaud D. :**
-- Développement en Python  
-- Conception du circuit imprimé (PCB)  
-- Intégration des fonctions capteurs dans le code  
-- Mise en place du Wi-Fi et interface web via ESP  
-
-
-**Alexander K. :**
-- Développement en Python  
-- Intégration des fonctions capteurs dans le code  
-- Programmation de l’écran (interface graphique avancée)  
-
-### Temps passé sur le projet :
-Arnaud à entendu parler du projet en Février et à commencer à chercher un équipier, puis après avoir trouvé Alexander, nous avons travaillé durant tout le mois de mars.
+The objective of the *FloraCare* project is therefore to simplify understanding a plant's needs by giving it a form of "communication" with humans, through sensors and a clear interface.
 
 ---
 
-## 3. Étapes du projet
+## 2. Work Organization
 
-1. **Idéation et organisation**
-   - Formation du groupe  ()
-   - Réflexion (~2h) sur le concept et la répartition des tâches  
+### 👥 Team
+- **Zane** — 1st year CS student, enthusiast of C++, Python, and electronics.
+- **CoderyanskyK** — 1st year CS student, passionate about Python.
 
-2. **Développement parallèle**
-   - Arnaud : conception rapide du PCB (contrainte de temps)  
-   - Alexander : début du développement de l’interface écran  
+### 🛠️ Role Distribution
 
-3. **Choix des capteurs (étape critique)**
-   - Compatibilité avec MicroPython  
-   - Coût abordable  
-   - Facilité d’intégration sur PCB  
-   - Pertinence des données  
+**Zane:**
+- Python development  
+- PCB design (circuit board)  
+- Sensor function integration into the code  
+- Wi-Fi setup and web interface via ESP  
 
-4. **Structuration du code**
-   - Organisation pour lisibilité et performance  
 
-5. **Développement avancé**
-   - Arnaud : Wi-Fi + interface web  
-   - Alexander : finalisation écran + capteurs  
+**Coderyansky:**
+- Python development  
+- Sensor function integration into the code  
+- Display programming (advanced graphical interface)  
 
-6. **Assemblage**
-   - Réception du PCB  
-   - Soudure et tests matériels  
+### Time spent on the project:
+Zane heard about the project in February and began looking for a teammate. After finding Coderyansky, we worked throughout March.
 
 ---
 
-## 4. Validation et fonctionnement
+## 3. Project Stages
 
-### ✅ État du projet
-- Circuit imprimé fonctionnel  
-- Code global fonctionnel  
+1. **Ideation and organization**
+   - Team formation  
+   - Reflection (~2h) on the concept and task distribution  
+
+2. **Parallel development**
+   - Zane: rapid PCB design (time constraint)  
+   - CoderyanskyK: beginning screen interface development  
+
+3. **Sensor selection (critical step)**
+   - Compatibility with MicroPython  
+   - Affordable cost  
+   - Easy PCB integration  
+   - Data relevance  
+
+4. **Code structuring**
+   - Organization for readability and performance  
+
+5. **Advanced development**
+   - Zane: Wi-Fi + web interface  
+   - CoderyanskyK: screen finalization + sensors  
+
+6. **Assembly**
+   - PCB reception  
+   - Soldering and hardware testing  
+
+---
+
+## 4. Validation and Operation
+
+### ✅ Project Status
+- Functional circuit board  
+- Functional global code  
 
 
-### 🧪 Méthodes de test
+### 🧪 Testing Methods
 
-- **Tests matériels :**
-  - Utilisation d’un multimètre  
-  - Vérification de l'état physique (température, robustesse du circuit imprimé)
+- **Hardware tests:**
+  - Use of a multimeter  
+  - Verification of physical condition (temperature, circuit board robustness)
 
-- **Tests logiciels :**
+- **Software tests:**
   - Debug via console (Thonny IDE)  
-  - Ajout de messages `print`  
+  - Addition of `print` messages  
 
-- **Validation des données :**
-  - Comparaison avec un thermomètre  
-  - Tests logiques  
-  - Utilisation réelle du système  
+- **Data validation:**
+  - Comparison with a thermometer  
+  - Logical tests  
+  - Real-world system usage  
 
-### ⚠️ Difficultés rencontrées
+### ⚠️ Challenges Encountered
 
-- Choix des capteurs  
-- Programmation de l’écran en MicroPython  
-- Mise en place d’un point d’accès Wi-Fi  
-- Conception rapide du PCB (1 semaine)
-
----
-
-## 5. Ouverture et perspectives
-
-### 🚀 Améliorations possibles
-- Ajout d’un boîtier finalisé  
-- Intégration de davantage de types de plantes  
-
-### 🔍 Analyse critique
-Le projet répond aux contraintes du concours avec une solution originale.  
-L’utilisation de ressources externes (drivers, documentation) a permis d’accélérer le développement.  
-L’intelligence artificielle a été utilisée de manière stratégique pour des tâches secondaires (HTML, descriptions).
-
-### 🧠 Compétences développées
-- Travail en équipe avec GitHub  
-- Rigueur en électronique (pas de “ça marche à peu près”)  
-- Application des compétences en python aquises en NSI dans un contexte concret  
-- Compréhension du protocole HTTP  
-
-### 🤝 Démarche d’inclusion
-Le projet vise à rendre le soin des plantes accessible à tous, y compris aux débutants, grâce à une interface simple et compréhensible.
+- Sensor selection  
+- Display programming in MicroPython  
+- Setting up a Wi-Fi access point  
+- Rapid PCB design (1 week)
 
 ---
 
-## ⚙️ Mise en fonctionnement
+## 5. Openings and Perspectives
 
-⚠️ **Important :**  
-Importer **tous les fichiers dans la mémoire flash** avant exécution (possible via ThonnyIDE).
+### 🚀 Possible Improvements
+- Addition of a finalized enclosure  
+- Integration of more plant types  
+
+### 🔍 Critical Analysis
+The project addresses competition constraints with an original solution.  
+The use of external resources (drivers, documentation) accelerated development.  
+Artificial intelligence was used strategically for secondary tasks (HTML, descriptions).
+
+### 🧠 Skills Developed
+- Teamwork with GitHub  
+- Rigor in electronics (no "it works roughly")  
+- Application of Python skills acquired in CS in a real-world context  
+- Understanding of HTTP protocol  
+
+### 🤝 Inclusive Approach
+The project aims to make plant care accessible to everyone, including beginners, through a simple and understandable interface.
+
+---
+
+## ⚙️ Deployment
+
+⚠️ **Important:**  
+Import **all files into flash memory** before execution (possible via ThonnyIDE).
 
 ---
 
@@ -131,5 +131,4 @@ Importer **tous les fichiers dans la mémoire flash** avant exécution (possible
 - https://randomnerdtutorials.com/micropython-wi-fi-manager-esp32-esp8266/  
 - https://requests.readthedocs.io/en/latest/  
 - https://documentation.espressif.com/esp32-s3_datasheet_en.pdf
-
 - https://github.com/lvgl-micropython/lvgl_micropython

@@ -3,89 +3,78 @@
 
 [![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE) [![Open Source](https://img.shields.io/badge/Open%20Source-yes-brightgreen.svg)](LICENSE) [![Open Hardware](https://img.shields.io/badge/Open%20Hardware-yes-brightgreen.svg)](https://openhardware.science) [![MicroPython](https://img.shields.io/badge/MicroPython-ESP32-1abc9c.svg)](https://micropython.org) [![ESP32-S3](https://img.shields.io/badge/ESP32--S3-ESPRESSIF-ff6f00.svg)](https://www.espressif.com)
 
-> **Tamagotchi de plante** — un objet connecté qui surveille la santé d'une plante avec des capteurs de température, d'humidité de l'air, d'humidité du sol et de lumière, construit pour les trophées NSI 2026 (thème **Nature**).
+> Plant Tamagotchi — a connected device that monitors a plant's health using temperature, air humidity, soil moisture and light sensors. Built for the Trophées NSI 2026 (theme: Nature).
 
+## 🎯 Goal
 
-<br>
-<br>
+This project was created for the [Trophées NSI 2026](https://trophees-nsi.fr/) by @0Zane and @coderyansky. It offers a playful and educational experience: a digital companion that helps care for a plant by displaying real-time sensor data.
 
-## 🎯 Objectif
+## 🏆 Awards
 
-Ce projet a été réalisé pour les [**trophées NSI 2026**](https://trophees-nsi.fr/) par **@0Zane** et **@coderyansky**. Il propose une experience ludique et éducative : un compagnon numérique qui aide à prendre soin d'une plante en affichant des données en temps réel selon l'état des capteurs.
+- **Regional Winner — Nature & Informatique**: FloraCare received the regional "Nature & Informatique" prize.
+- **Nominated — Public Prize**: FloraCare was nominated for the Public Prize (see results).
 
+See the official results: https://trophees-nsi.fr/resultats-2026
 
+## 🧩 Hardware & Sensors
 
-## 🧩 Matériel & Capteurs
+The project is based on a custom PCB driven by an **ESP32-S3**, chosen for native USB and enough power to run MicroPython.
 
-Le projet repose sur un circuit imprimé personnalisé (PCB) piloté par un **ESP32-S3**, choisi pour ses capacités USB natif et sa puissance pour exécuter Micropython.
-
-| Composant | Description | Interface / Protocole |
+| Component | Description | Interface / Protocol |
 | :--- | :--- | :--- |
 | **MCU** | ESP32-S3 Module | - |
-| **PCB** | Conception personnalisée (Gerber dans `/hardware`) | - |
-| **Écran** | 1.9-inch 170X320 IPS color screen | **SPI** |
-| **Capteur Temp. / Humidité** | DHT22 | ADC |
-| **Capteur Humidité Sol** | Capteur d'humidité du sol analogique | **ADC** |
-| **Capteur Lumière** | BH1750 | **I2C** / |
-| **Alimentation** | Port USB-C  | **5V DC -> 3.3V DC** |
+| **PCB** | Custom design (Gerber files in `/hardware`) | - |
+| **Display** | 1.9-inch 170x320 IPS color screen | **SPI** |
+| **Temp / Humidity Sensor** | DHT22 | ADC |
+| **Soil Moisture Sensor** | Analog soil moisture sensor | **ADC** |
+| **Light Sensor** | BH1750 | **I2C** |
+| **Power** | USB-C port | **5V DC -> 3.3V DC** |
 
-> ⚡ Ce projet tourne sous **Micropython** et est prévu pour fonctionner en continu via USB-C.
+> ⚡ The firmware runs on **MicroPython** and is intended to run continuously when powered via USB-C.
 
+## 🚀 Quick Start
 
-
-## 🚀 Démarrage rapide
-
-1. Flasher le firmware MicroPython sur l'ESP32-S3.
-2. Copier tous les fichiers python sur la mémoire flash du microcontrôleur.
-3. Connecter les capteurs sur les broches définies dans le fichier main.py.
-4. Brancher en USB-C et observer les lectures sur l'écran.
+1. Flash MicroPython firmware to the ESP32-S3.
+2. Copy all Python files to the microcontroller's flash.
+3. Connect sensors to the pins defined in `main.py`.
+4. Power via USB-C and observe readings on the display.
 
 ![](https://github.com/0Zane/FloraCare/blob/271e3f572fed55735c0cb3f5bc3360cbd0f8c488/assets/floracareproject.jpg)
 
-## 🌐 Interface Web WiFi
+## 🌐 WiFi Web Interface
 
-FloraCare crée un **point d'accès WiFi (AP)** pour permettre l'accès à distance aux données de la plante via une interface web.
+FloraCare creates a WiFi Access Point (AP) that serves a web interface to view plant data remotely.
 
-### Informations de connexion WiFi
+### WiFi connection info
 
-| Paramètre | Valeur |
+| Parameter | Value |
 | :--- | :--- |
 | **SSID** | `FloraCare` |
-| **Mot de passe** | `pythonTNSI2026` |
-| **Adresse IP** | `192.168.4.1` |
-| **Protocole** | **HTTP** (Port 80) |
+| **Password** | `pythonTNSI2026` |
+| **IP Address** | `192.168.4.1` |
+| **Protocol** | **HTTP** (port 80) |
 
-### Accès à l'interface web
+### Accessing the web interface
 
-1. Connectez votre appareil (téléphone, tablette, PC) au réseau WiFi **FloraCare**
-2. Utilisez le mot de passe : **pythonTNSI2026**
-3. Ouvrez un navigateur web et accédez à : `http://192.168.4.1`
-4. Vous verrez l'interface affichant les données en temps réel de vos capteurs (température, humidité, lumière, humidité du sol)
+1. Connect your device (phone, tablet, PC) to the `FloraCare` WiFi network.
+2. Use the password `pythonTNSI2026`.
+3. Open a browser and go to `http://192.168.4.1`.
+4. The web page shows real-time sensor values (temperature, humidity, light, soil moisture).
 
-> 💡 **Conseil** : L'interface est accessible tant que le module ESP32-S3 est alimenté via USB-C.
+> 💡 Tip: the web interface is available while the ESP32-S3 is powered via USB-C.
 
+## 📁 Repository Structure
 
-## 📁 Structure du dépôt
+- `src/`: MicroPython code (main, libraries, config)
+- `hardware/`: Gerber and PCB files (KiCad)
+- `README.md`: project documentation and user guide
+- `presentation.md`: project presentation
+- `requirements.txt`: required libraries
+- `LICENSE`: GPL v3
 
-- `src/` : code Micropython (main, bibliothèques, config)
-- `hardware/` : fichiers Gerber et PCB (KiCad)
-- `README.md` : documentation du projet et mode d'emploi
-- `presentation.md` : présentation du projet
-- `requirements.txt` : Librairies utilisées à installer
-- `LICENSE` : GPL v3
+## 🤝 Contributing
 
+This project is open source and open hardware. Contributions are welcome.
+## 📝 License
 
-
-## 🤝 Contribution
-
-Ce projet est **open source et open hardware**. N'hésitez pas à proposer des améliorations :
-
-- Améliorer la gestion des capteurs ou ajouter des nouveaux capteurs
-- Ajouter une interface web / API pour consulter les données à distance
-- Optimiser la consommation et la réservation de l'écran
-
-
-
-## 📝 Licence
-
-Ce projet est distribué sous licence **GPL v3**. Voir le fichier `LICENSE` pour plus de détails.
+This project is licensed under **GPL v3**. See the `LICENSE` file for details.
