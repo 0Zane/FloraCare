@@ -2,55 +2,55 @@
 
 ## 📋 Description
 
-Ceci est le circuit imprimé (PCB) du projet FloraCare, conçu pour contrôler et monitorer les conditions de croissance des plantes.
+This is the printed circuit board (PCB) for the FloraCare project, designed to control and monitor plant growing conditions.
 
 ![Floracare](https://github.com/0Zane/FloraCare/blob/725fefea09342597018dde95f6bea44f7875f587/assets/floracarepcbpic.jpeg)
 
-## 🛠 Conception
+## 🛠 Design
 
-- **Outil de conception** : KiCad
-- **Fichiers de conception** :
-  - `floracare.kicad_sch` - Schéma électrique
-  - `floracare.kicad_pcb` - Layout du PCB
-  - `floracare.kicad_pro` - Fichier projet KiCad
+* **Design Tool**: KiCad
+* **Design Files**:
 
+  * `floracare.kicad_sch` - Electrical schematic
+  * `floracare.kicad_pcb` - PCB layout
+  * `floracare.kicad_pro` - KiCad project file
 
-## 📐 Visualisation du circuit imprimé
+## 📐 PCB Preview
 
-Consultez la visualisation du PCB :
+View the PCB rendering:
 
 ![PCB FloraCare](pcb.png)
 
-## 📄 Schéma éléctrique
+## 📄 Electrical Schematic
 
-Pour la documentation détaillée du PCB, consultez : [floracare.pdf](floracare.pdf)
+For detailed PCB documentation, see: [floracare.pdf](floracare.pdf)
 
-## 🏭 Fabrication
+## 🏭 Manufacturing
 
-Le PCB a été commandé auprès de **JLCPCB** pour la fabrication.
-L'assemblage est fait à la main par @0Zane
+The PCB was ordered from **JLCPCB** for fabrication.
+Assembly is done by hand by @0Zane.
 
-- **Fabricant** : JLCPCB
-- **Format d'export** : Gerber + fichiers de perçage
+* **Manufacturer**: JLCPCB
+* **Export Format**: Gerber files + drill files
 
+## 📦 Directory Structure
 
-## 📦 Contenu du Dossier
-
-```
+```text
 hardware/
-├── floracare.kicad_sch       # Schéma électrique
-├── floracare.kicad_pcb       # Design du PCB
-├── floracare.kicad_pro       # Fichier projet
-├── pcb.png                   # Visualisation du PCB
-├── floracare.pdf             # Documentation complète
-└── README.md                 # Ce fichier
+├── floracare.kicad_sch       # Electrical schematic
+├── floracare.kicad_pcb       # PCB design
+├── floracare.kicad_pro       # Project file
+├── pcb.png                   # PCB preview
+├── floracare.pdf             # Complete documentation
+└── README.md                 # This file
 ```
 
-## 🔧 Outils Requis
+## 🔧 Required Tools
 
-Pour modifier ou afficher ce projet PCB, vous aurez besoin de :
-- **KiCad** 9.0 ([kicad.org](https://www.kicad.org))
+To view or modify this PCB project, you will need:
+
+* **KiCad** 9.0 (https://www.kicad.org)
 
 ---
 
-Pour toute question sur le PCB ou sa fabrication, ouvrez une question dans la section discussions du repo github.
+For any questions regarding the PCB or its manufacturing process, please open a discussion in the GitHub repository's Discussions section.
